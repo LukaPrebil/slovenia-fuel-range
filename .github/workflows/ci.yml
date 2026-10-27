@@ -5,6 +5,10 @@ on:
     branches: ["**"]
   pull_request:
 
+# The checks only read the repository; the default token can write.
+permissions:
+  contents: read
+
 jobs:
   check:
     runs-on: ubuntu-latest
