@@ -83,3 +83,9 @@ The code is MIT licensed, see [LICENSE](LICENSE).
 
 The data in `data/` is CC BY 4.0, see [LICENSE-DATA](LICENSE-DATA). It derives from ARSO, gov.si, SURS,
 Petrol, AMZS, Delo, ADAC and OSRM, each credited per row or per file.
+
+## Dependencies
+
+Dependabot opens grouped npm pull requests every Monday and action updates monthly. Both carry
+conventional commit messages, so they pass the same gates as any other branch. Security alerts and
+automated security fixes are enabled on the repository.
