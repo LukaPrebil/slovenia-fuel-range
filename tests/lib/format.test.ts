@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest'
-import { formatEur, formatKm, formatOne, formatPercent, formatPrice } from '../../src/lib/format.ts'
+import {
+  formatDate,
+  formatEur,
+  formatKm,
+  formatMonth,
+  formatOne,
+  formatPercent,
+  formatPrice,
+} from '../../src/lib/format.ts'
 
 describe('Slovenian formatting', () => {
   it('uses a dot for thousands and a comma for decimals', () => {
@@ -38,5 +46,28 @@ describe('English formatting', () => {
   it('keeps Slovenian as the default', () => {
     expect(formatKm(4257)).toBe('4.257')
     expect(formatEur(1073.82)).toBe('1.073,82')
+  })
+})
+
+describe('dates and months', () => {
+  it('writes a Slovenian date the way a reader expects', () => {
+    expect(formatDate('2026-10-27', 'sl')).toBe('27. 10. 2026')
+    expect(formatDate('2026-11-02', 'sl')).toBe('2. 11. 2026')
+  })
+
+  it('writes an English date with a short month', () => {
+    expect(formatDate('2026-10-27', 'en')).toBe('27 Oct 2026')
+    expect(formatDate('2026-11-02', 'en')).toBe('2 Nov 2026')
+  })
+
+  it('writes a month name from a month-only stamp', () => {
+    expect(formatMonth('2026-06', 'sl')).toBe('junij 2026')
+    expect(formatMonth('2026-06', 'en')).toBe('June 2026')
+    expect(formatMonth('2026-01', 'sl')).toBe('januar 2026')
+    expect(formatMonth('2026-12', 'en')).toBe('December 2026')
+  })
+
+  it('passes an unreadable value through untouched', () => {
+    expect(formatMonth('neki', 'sl')).toBe('neki')
   })
 })

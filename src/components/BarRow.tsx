@@ -11,7 +11,7 @@ export function BarRow({ row, language }: { row: ChartRow; language: Language })
       data-testid="chart-row"
       data-powertrain={row.powertrain}
     >
-      <div className="min-w-0">
+      <div className="chart-label min-w-0">
         <span className="block truncate text-sm font-semibold">
           {row.model}
           {row.personal && (
@@ -38,7 +38,7 @@ export function BarRow({ row, language }: { row: ChartRow; language: Language })
           />
         )}
       </div>
-      <div className="text-right tabular-nums">
+      <div className="chart-value text-right tabular-nums">
         <span className="block text-sm font-semibold" data-testid="row-km">
           {formatKm(row.km, language)} km
         </span>

@@ -48,3 +48,80 @@ export function formatPrice(value: number, language: Language = 'sl'): string {
 export function formatPercent(ratio: number, language: Language = 'sl'): string {
   return fixed(Math.round(ratio * 100), 0, language)
 }
+
+const SL_MONTHS_LONG = [
+  'januar',
+  'februar',
+  'marec',
+  'april',
+  'maj',
+  'junij',
+  'julij',
+  'avgust',
+  'september',
+  'oktober',
+  'november',
+  'december',
+]
+
+const EN_MONTHS_LONG = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+]
+
+const EN_MONTHS_SHORT = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+]
+
+function parts(iso: string): { year: string; month: number; day: number } | null {
+  const match = /^(\d{4})-(\d{2})(?:-(\d{2}))?$/.exec(iso.trim())
+  if (!match) {
+    return null
+  }
+  return { year: match[1] ?? '', month: Number(match[2]), day: Number(match[3] ?? '1') }
+}
+
+/** "2026-10-27" -> "27. 10. 2026" in Slovenian, "27 Oct 2026" in English. */
+export function formatDate(iso: string, language: Language = 'sl'): string {
+  const parsed = parts(iso)
+  if (!parsed) {
+    return iso
+  }
+  const { year, month, day } = parsed
+  if (language === 'sl') {
+    return `${day}. ${month}. ${year}`
+  }
+  return `${day} ${EN_MONTHS_SHORT[month - 1] ?? ''} ${year}`
+}
+
+/** "2026-06" -> "junij 2026" or "June 2026". */
+export function formatMonth(iso: string, language: Language = 'sl'): string {
+  const parsed = parts(iso)
+  if (!parsed) {
+    return iso
+  }
+  const { year, month } = parsed
+  const name = language === 'sl' ? SL_MONTHS_LONG[month - 1] : EN_MONTHS_LONG[month - 1]
+  return `${name ?? iso} ${year}`
+}
