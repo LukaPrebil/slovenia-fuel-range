@@ -1,0 +1,14 @@
+{
+  "elektrika": {
+    "pricePerKwh": 0.1807,
+    "asOf": "2025",
+    "sourceUrl": "https://pxweb.stat.si/SiStatData/pxweb/sl/Data/-/1817565S.px",
+    "note": "SURS, cena elektrike za gospodinjstva 2025, odjem 5-15 MWh, z vsemi dajatvami"
+  },
+  "javnoPolnjenje": {
+    "pricePerKwh": 0.47,
+    "asOf": "2025-11-01",
+    "sourceUrl": "https://www.petrol.si/mobilnost/zasebni-uporabniki/javne-elektricne-polnilnice/cenik-polnjenje",
+    "note": "Petrol OneCharge, javna DC polnilnica, registrirani uporabniki (AC 0,37 EUR/kWh)"
+  }
+}

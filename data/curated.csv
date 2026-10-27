@@ -1,0 +1,50 @@
+panel,rank,model,variant,powertrain,count,consumption,unit,basis,source_url,as_of
+A,1,Renault Clio,1.0 TCe 100,bencin,2446,5.49,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,2,Škoda Octavia,1.5 TSI mHEV,bencin,1957,5.00,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,3,Renault Captur,1.0 TCe 90,bencin,1756,6.07,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,4,Škoda Kamiq,1.0 TSI 85 kW,bencin,1335,5.30,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,5,Škoda Kodiaq,1.5 TSI mHEV,bencin,1257,6.00,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,6,VW Tiguan,1.5 eTSI 96 kW,bencin,1172,5.80,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,7,Hyundai Tucson,1.6 T-GDI 110 kW,bencin,1150,7.37,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,8,VW T-Roc,1.5 eTSI 85 kW,bencin,1146,5.50,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,9,Peugeot 2008,1.2 PureTech 100,bencin,1041,5.65,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,10,VW T-Cross,1.0 TSI 85 kW,bencin,991,5.50,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,11,VW Golf,1.5 eTSI 85 kW,bencin,973,5.00,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,12,Dacia Duster,1.2 TCe 130 4x4,bencin,934,5.73,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,13,Citroën C3,1.2 PureTech 75,bencin,894,5.75,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,14,Toyota Yaris Cross,1.5 HEV 2WD,hibrid,793,6.10,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,15,Toyota Corolla,2.0 HEV,hibrid,782,4.40,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,16,VW Taigo,1.0 TSI 85 kW,bencin,762,5.30,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,17,Nissan Qashqai,1.3 DIG-T 116 kW,bencin,739,6.30,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,18,Peugeot 208,1.2 PureTech 75,bencin,724,5.40,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,19,Dongfeng T5 evo,1.5 T 130 kW,bencin,705,6.90,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,20,Kia Sportage,1.6 T-GDI mHEV,bencin,679,6.65,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,21,Tesla Model Y,RWD,elektrika,609,13.90,kWh/100km,wltp,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/tesla/model-y/,2026-10
+A,22,VW ID.7,Pure 150 kW,elektrika,358,14.18,kWh/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,23,VW ID.4,Pure 140 kW,elektrika,350,16.27,kWh/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,24,Tesla Model 3,RWD,elektrika,347,13.00,kWh/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,25,Cupra Born,58 kWh,elektrika,306,14.29,kWh/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+B,1,Renault Clio,Clio IV TCe 90,bencin,60000,4.70,l/100km,nedc,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/renault/clio/,2026-10
+B,2,VW Golf,Golf VII 1.6 TDI,dizel,60000,3.80,l/100km,nedc,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/vw/golf/,2026-10
+B,3,VW Passat,Passat B8 2.0 TDI,dizel,43000,4.20,l/100km,nedc,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/vw/passat/,2026-10
+B,4,Škoda Octavia,Octavia III 1.6 TDI,dizel,29000,3.80,l/100km,nedc,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/skoda/octavia/,2026-10
+B,5,Renault Megane,Megane III dCi 110,dizel,28000,3.50,l/100km,nedc,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/renault/megane/,2026-10
+B,6,Audi A4,A4 B8 2.0 TDI,dizel,25000,4.60,l/100km,nedc,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/audi/a4/,2026-10
+B,7,Opel Astra,Astra J 1.4 Turbo,bencin,,5.50,l/100km,nedc,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/opel/astra/,2026-10
+B,8,VW Polo,Polo V 1.0,bencin,,4.70,l/100km,nedc,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/vw/polo/,2026-10
+B,9,Opel Corsa,Corsa E 1.2,bencin,,5.40,l/100km,nedc,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/opel/corsa/,2026-10
+B,10,Citroën C3,C3 II PureTech 82,bencin,,4.60,l/100km,nedc,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/citroen/c3/,2026-10
+B,11,VW Touran,Touran I 1.6 TDI,dizel,17000,4.60,l/100km,nedc,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/vw/touran/,2026-10
+B,12,VW Tiguan,Tiguan I 2.0 TDI,dizel,,5.30,l/100km,nedc,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/vw/tiguan/,2026-10
+B,13,Renault Scenic,Scenic III dCi 110,dizel,15000,4.10,l/100km,nedc,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/renault/scenic/,2026-10
+B,14,Citroën Berlingo,Berlingo 2 e-HDi 90,dizel,14000,4.40,l/100km,nedc,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/citroen/berlingo/,2026-10
+B,16,Renault Captur,Captur I TCe 120,bencin,,5.50,l/100km,nedc,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/renault/captur/,2026-10
+B,17,Tesla Model Y,RWD,elektrika,1700,13.90,kWh/100km,wltp,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/tesla/model-y/,2026-10
+B,18,Tesla Model 3,RWD,elektrika,1550,13.20,kWh/100km,wltp,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/tesla/model-3/,2026-10
+B,19,BMW i3,94 Ah,elektrika,1000,11.50,kWh/100km,wltp,https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/bmw/i3/,2026-10
+A,2,Škoda Octavia,2.0 TDI 116,dizel,,4.20,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,5,Škoda Kodiaq,2.0 TDI DSG,dizel,,5.30,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,6,VW Tiguan,2.0 TDI 150,dizel,,5.30,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,7,Hyundai Tucson,1.6 CRDi 116,dizel,,5.68,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,11,VW Golf,2.0 TDI 116,dizel,,4.40,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
+A,20,Kia Sportage,1.6 CRDi 136,dizel,,5.50,l/100km,wltp,https://www.gov.si/assets/organi-v-sestavi/ARSO/Podnebne-spremembe/Avtomobili/Seznam-modelov-novih-osebnih-avtomobilov-v-RS-WLTPm.xlsx,2026-06
