@@ -1,78 +1,18 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
   "files": {
-    "includes": [
-      "**",
-      "!dist",
-      "!node_modules",
-      "!package-lock.json",
-      "!data/catalogue.json",
-      "!data/prices.json",
-      "!data/prices-manual.json",
-      "!data/catalogue-meta.json",
-      "!data/curated.csv",
-      "!tests/fixtures/arso-wltp-2026-06.xlsx",
-      "!.playwright-mcp",
-      "!**/*.css"
-    ]
+    "includes": ["**", "!**/*.css", "!data/catalogue.json"]
   },
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
-  },
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "space",
-    "indentWidth": 2,
-    "lineWidth": 100
-  },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "single",
-      "semicolons": "asNeeded",
-      "trailingCommas": "all",
-      "jsxQuoteStyle": "double",
-      "arrowParentheses": "always"
-    }
-  },
-  "json": {
-    "formatter": {
-      "indentWidth": 2
-    }
-  },
+  "formatter": { "indentStyle": "space", "lineWidth": 100 },
+  "javascript": { "formatter": { "quoteStyle": "single", "semicolons": "asNeeded" } },
   "linter": {
-    "enabled": true,
-    "rules": {
-      "preset": "recommended",
-      "correctness": {
-        "noUnusedImports": "error",
-        "noUnusedVariables": "error"
-      },
-      "style": {
-        "useConst": "error",
-        "noNonNullAssertion": "warn"
-      }
-    }
-  },
-  "assist": {
-    "enabled": true,
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
-    }
+    "domains": { "react": "recommended", "test": "recommended" }
   },
   "overrides": [
     {
       "includes": ["tests/**"],
-      "linter": {
-        "rules": {
-          "style": {
-            "noNonNullAssertion": "off"
-          }
-        }
-      }
+      "linter": { "rules": { "style": { "noNonNullAssertion": "off" } } }
     }
   ]
 }
