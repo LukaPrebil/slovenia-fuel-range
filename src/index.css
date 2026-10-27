@@ -10,6 +10,8 @@
   --ink: #111111;
   --ink-muted: #5f6368;
   --rule: #e7e7e9;
+  --rule-faint: #f1f1f2;
+  --marker: #c4c4c4;
   --bar-bencin: #9a9a9a;
   --bar-dizel: #e8730c;
   --bar-hibrid: #e070a0;
@@ -27,6 +29,8 @@
   --ink: #f4f4f5;
   --ink-muted: #a1a1aa;
   --rule: #27272a;
+  --rule-faint: #1d1d20;
+  --marker: #3f3f46;
   --bar-bencin: #b0b0b0;
   --bar-dizel: #f0873c;
   --bar-hibrid: #e88ab7;
@@ -43,6 +47,8 @@
   --color-ink: var(--ink);
   --color-muted: var(--ink-muted);
   --color-rule: var(--rule);
+  --color-rule-faint: var(--rule-faint);
+  --color-marker: var(--marker);
   --color-bencin: var(--bar-bencin);
   --color-dizel: var(--bar-dizel);
   --color-hibrid: var(--bar-hibrid);

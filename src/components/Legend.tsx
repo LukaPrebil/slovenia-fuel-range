@@ -1,0 +1,21 @@
+import { POWERTRAINS } from '../lib/types.ts'
+import { BAR_COLOUR, INK_COLOUR, POWERTRAIN_LABEL } from './powertrain.ts'
+
+export function Legend({ publicPrice }: { publicPrice: string }) {
+  return (
+    <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs">
+      {POWERTRAINS.map((powertrain) => (
+        <li key={powertrain} className="flex items-center gap-2">
+          <span className={`inline-block h-2.5 w-5 rounded-full ${BAR_COLOUR[powertrain]}`} />
+          <span className={`font-semibold ${INK_COLOUR[powertrain]}`}>
+            {POWERTRAIN_LABEL[powertrain]}
+          </span>
+        </li>
+      ))}
+      <li className="flex items-center gap-2 text-muted">
+        <span className="inline-block h-1 w-5 rounded-full bg-elektrika opacity-40" />
+        <span>elektrika na javni polnilnici ({publicPrice} €/kWh)</span>
+      </li>
+    </ul>
+  )
+}

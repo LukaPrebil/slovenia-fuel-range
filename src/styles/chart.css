@@ -1,0 +1,65 @@
+/*
+ * The plot is a three-track grid: label, track, value. Markers and bars share the
+ * middle track, so a distance marker lines up with every bar at once.
+ */
+.chart-panel {
+  --label-w: 15rem;
+  --value-w: 6.5rem;
+}
+
+@media (max-width: 900px) {
+  .chart-panel {
+    --label-w: 8.5rem;
+    --value-w: 5.5rem;
+  }
+}
+
+.chart-row {
+  display: grid;
+  grid-template-columns: var(--label-w) minmax(0, 1fr) var(--value-w);
+  align-items: center;
+  column-gap: 0.75rem;
+}
+
+.chart-row + .chart-row {
+  border-top: 1px solid var(--rule-faint);
+}
+
+.chart-plot {
+  position: relative;
+}
+
+.chart-markers {
+  position: absolute;
+  inset-block: 0;
+  left: calc(var(--label-w) + 0.75rem);
+  right: calc(var(--value-w) + 0.75rem);
+  pointer-events: none;
+}
+
+.chart-marker {
+  position: absolute;
+  inset-block: 0;
+  width: 1px;
+  border-left: 1px dashed var(--marker);
+}
+
+.chart-track {
+  position: relative;
+  height: 1.05rem;
+}
+
+.chart-bar {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  border-radius: 999px;
+}
+
+.chart-ghost {
+  position: absolute;
+  left: 0;
+  height: 0.2rem;
+  border-radius: 999px;
+  opacity: 0.38;
+}
