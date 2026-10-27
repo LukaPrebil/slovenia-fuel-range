@@ -9,6 +9,7 @@ import { ManualCarEntry } from './components/ManualCarEntry.tsx'
 import { PanelSwitch } from './components/PanelSwitch.tsx'
 import { PriceControls } from './components/PriceControls.tsx'
 import { RealWorldToggle } from './components/RealWorldToggle.tsx'
+import { Sources } from './components/Sources.tsx'
 import { ThemeToggle } from './components/ThemeToggle.tsx'
 import { catalogueAsOf, curatedRows, defaultPrices, fuelWindow } from './data/load.ts'
 import {
@@ -57,7 +58,7 @@ export default function App() {
     personal ? [...list, { ...personal, panel }].sort((left, right) => right.km - left.km) : list
 
   return (
-    <main className="mx-auto max-w-[1180px] px-4 py-8">
+    <main className="mx-auto w-full px-4 py-8 sm:px-6 lg:px-8">
       <header>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <h1 className="text-xl font-bold sm:text-2xl">{t('page.title')}</h1>
@@ -201,6 +202,8 @@ export default function App() {
           })}
         </p>
       </footer>
+
+      <Sources language={state.language} />
     </main>
   )
 }

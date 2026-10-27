@@ -55,7 +55,7 @@ export const en: Messages = {
   'car.loading': 'Loading the model list …',
   'car.resultLabel': '{model} ({variant})',
 
-  'freshness.window': 'Fuel prices: {from}–{to}. Consumption list: {asOf}.',
+  'freshness.window': 'Fuel prices: {from} – {to}. Consumption list: {asOf}.',
   'freshness.stale': 'The data is more than 14 days old. Check the validity date.',
 
   'theme.label': 'Theme',
@@ -66,4 +66,8 @@ export const en: Messages = {
   'language.label': 'Language',
 
   'source.heading': 'Sources and method',
+  'source.method':
+    'Consumption is the official WLTP figure from the ARSO list for every model on sale in Slovenia. For older fleet generations the official figure of that generation (NEDC) is converted with a factor of 1.21. Each model uses its entry variant. The fleet by model is an estimate from a media analysis of registration data, not official statistics.',
+  'source.note':
+    'Real consumption runs above the official figure: petrol +20 %, diesel and hybrid +18 %, electric +19 % (EC/TNO). Plug-in hybrids are left out because their official figure is 240–500 % off. Purchase prices are not part of the calculation.',
 }

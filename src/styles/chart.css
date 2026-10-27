@@ -5,12 +5,56 @@
 .chart-panel {
   --label-w: 15rem;
   --value-w: 6.5rem;
+  --marker-row: 0;
 }
 
 @media (max-width: 900px) {
   .chart-panel {
     --label-w: 8.5rem;
     --value-w: 5.5rem;
+  }
+}
+
+/*
+ * On a phone a three-column row leaves about 60 px for the bar, so the row
+ * becomes two lines: labels and figures on top, the bar across the full width.
+ */
+@media (max-width: 640px) {
+  /* Two labels cannot share a line on a 150 px track, so the second one drops down. */
+  .chart-panel {
+    --marker-row: 1.7rem;
+  }
+
+  .chart-plot {
+    padding-top: 3.6rem;
+  }
+
+  .chart-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'label value'
+      'track track';
+    row-gap: 0.3rem;
+    column-gap: 0.5rem;
+    padding-block: 0.5rem;
+  }
+
+  .chart-label {
+    grid-area: label;
+  }
+
+  .chart-value {
+    grid-area: value;
+  }
+
+  .chart-track {
+    grid-area: track;
+    height: 0.8rem;
+  }
+
+  .chart-markers {
+    left: 0;
+    right: 0;
   }
 }
 
@@ -42,6 +86,17 @@
   inset-block: 0;
   width: 1px;
   border-left: 1px dashed var(--marker);
+}
+
+.chart-marker-label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 0.65rem;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--ink-muted);
 }
 
 .chart-track {

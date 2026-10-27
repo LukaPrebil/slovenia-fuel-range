@@ -54,7 +54,7 @@ export const sl = {
   'car.loading': 'Nalagam seznam modelov …',
   'car.resultLabel': '{model} ({variant})',
 
-  'freshness.window': 'Cene goriv: {from}–{to}. Seznam porabe: {asOf}.',
+  'freshness.window': 'Cene goriv: {from} – {to}. Seznam porabe: {asOf}.',
   'freshness.stale': 'Podatki so stari več kot 14 dni. Preveri datum veljavnosti.',
 
   'theme.label': 'Tema',
@@ -65,6 +65,10 @@ export const sl = {
   'language.label': 'Jezik',
 
   'source.heading': 'Viri in metoda',
+  'source.method':
+    'Poraba je uradna, WLTP, iz seznama ARSO za vsak model, ki je pri nas naprodaj. Pri starejših generacijah voznega parka je uradni podatek tiste generacije (NEDC) preračunan s faktorjem 1,21. Za vsak model je izbrana vstopna različica. Vozni park po modelih je ocena iz medijske analize registrskih podatkov, ne uradna statistika.',
+  'source.note':
+    'Realna poraba je v povprečju višja od uradne: bencin +20 %, dizel in hibrid +18 %, elektrika +19 % (EC/TNO). Priključni hibridi niso prikazani, ker njihov uradni podatek odstopa za 240–500 %. Nakupne cene niso del izračuna.',
 }
 
 export type Messages = typeof sl

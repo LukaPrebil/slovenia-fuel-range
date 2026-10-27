@@ -25,7 +25,7 @@ export function ChartPanel({ panel, title, subtitle, rows, markers, language }: 
         {title}
       </h2>
       <p className="mt-0.5 mb-2 text-xs text-muted">{subtitle}</p>
-      <div className="chart-plot pt-9">
+      <div className="chart-plot pt-10">
         <Markers markers={markers} language={language} />
         <ol>
           {rows.map((row) => (

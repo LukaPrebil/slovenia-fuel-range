@@ -1,3 +1,4 @@
+import { formatDate, formatMonth } from '../lib/format.ts'
 import { translate, type Language } from '../lib/i18n.ts'
 import type { Freshness } from '../lib/freshness.ts'
 
@@ -18,9 +19,9 @@ export function FreshnessBanner({
     <div className="mt-3 space-y-1">
       <p className="text-xs text-muted">
         {translate(language, 'freshness.window', {
-          from: validFrom,
-          to: validTo,
-          asOf: catalogueAsOf,
+          from: formatDate(validFrom, language),
+          to: formatDate(validTo, language),
+          asOf: formatMonth(catalogueAsOf, language),
         })}
       </p>
       {freshness.stale && (

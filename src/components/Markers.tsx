@@ -4,8 +4,8 @@ import { formatKm } from '../lib/format.ts'
 import { translate, type Language } from '../lib/i18n.ts'
 
 /**
- * Labels sit on two rows: on a narrow plot the two markers of the compact set are
- * closer together than a label is wide, so they would otherwise collide.
+ * The label is a two-line block centred on its dashed line. A narrow plot cannot
+ * fit two of them side by side, so below 640 px the second one drops a row.
  */
 export function Markers({ markers, language }: { markers: Marker[]; language: Language }) {
   return (
@@ -17,10 +17,15 @@ export function Markers({ markers, language }: { markers: Marker[]; language: La
           style={{ left: `${barWidthPercent(marker.km)}%` }}
         >
           <span
-            className="absolute left-1/2 -translate-x-1/2 text-[0.65rem] whitespace-nowrap text-muted"
-            style={{ top: index % 2 === 0 ? '0' : '0.8rem' }}
+            className="chart-marker-label"
+            style={{ top: index % 2 === 0 ? '0' : 'var(--marker-row)' }}
           >
-            {translate(language, `city.${marker.city}`)} {formatKm(marker.km, language)}
+            <span className="block leading-tight">
+              {translate(language, `city.${marker.city}`)}
+            </span>
+            <span className="block text-[0.6rem] leading-tight opacity-80">
+              {formatKm(marker.km, language)} km
+            </span>
           </span>
         </div>
       ))}
