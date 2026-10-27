@@ -1,9 +1,16 @@
 name: ci
 
 on:
+  # A pull request already runs these checks, so a branch push needs no second run.
   push:
-    branches: ["**"]
+    branches: [main]
   pull_request:
+  workflow_dispatch:
+
+# A newer push makes an in-flight run pointless.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 # The checks only read the repository; the default token can write.
 permissions:
