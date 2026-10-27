@@ -173,7 +173,10 @@ export default function App() {
 				/>
 			</div>
 
-			<div className="panels mt-1 grid gap-8 lg:grid-cols-2" data-panel={state.panel}>
+			<div
+				className="panels mt-1 grid items-start gap-4 lg:grid-cols-2 lg:gap-5"
+				data-panel={state.panel}
+			>
 				<ChartPanel
 					panel="A"
 					title={t('panel.a.title')}
