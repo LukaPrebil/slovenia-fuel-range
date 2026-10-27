@@ -8,31 +8,31 @@ export const LANGUAGES: readonly Language[] = ['sl', 'en']
 const CATALOGUES: Record<Language, Messages> = { sl, en }
 
 export function isLanguage(value: string | null | undefined): value is Language {
-  return value === 'sl' || value === 'en'
+	return value === 'sl' || value === 'en'
 }
 
 function fill(template: string, params: Record<string, string | number>): string {
-  return template.replace(/\{(\w+)\}/g, (match, name: string) =>
-    name in params ? String(params[name]) : match,
-  )
+	return template.replace(/\{(\w+)\}/g, (match, name: string) =>
+		name in params ? String(params[name]) : match,
+	)
 }
 
 export function translate(
-  language: Language,
-  key: MessageKey,
-  params: Record<string, string | number> = {},
+	language: Language,
+	key: MessageKey,
+	params: Record<string, string | number> = {},
 ): string {
-  return fill(CATALOGUES[language][key], params)
+	return fill(CATALOGUES[language][key], params)
 }
 
 export function translateAll(language: Language): Messages {
-  return CATALOGUES[language]
+	return CATALOGUES[language]
 }
 
 /** Both files must stay in step; the test asserts this over the union of keys. */
 export function keySets(): { sl: MessageKey[]; en: MessageKey[] } {
-  return {
-    sl: Object.keys(sl).sort() as MessageKey[],
-    en: Object.keys(en).sort() as MessageKey[],
-  }
+	return {
+		sl: Object.keys(sl).sort() as MessageKey[],
+		en: Object.keys(en).sort() as MessageKey[],
+	}
 }

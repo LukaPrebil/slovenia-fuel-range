@@ -15,13 +15,13 @@ export const catalogueAsOf: string = catalogueMeta.asOf
 
 /** Fuel comes from the weekly export; electricity is a hand-maintained snapshot. */
 export const defaultPrices: EnergyPrices = {
-  bencin: pricesFile.fuel.bencin,
-  dizel: pricesFile.fuel.dizel,
-  elektrika: manualPrices.elektrika.pricePerKwh,
-  javnoPolnjenje: manualPrices.javnoPolnjenje.pricePerKwh,
+	bencin: pricesFile.fuel.bencin,
+	dizel: pricesFile.fuel.dizel,
+	elektrika: manualPrices.elektrika.pricePerKwh,
+	javnoPolnjenje: manualPrices.javnoPolnjenje.pricePerKwh,
 }
 
 export const manualPriceMeta = {
-  elektrika: manualPrices.elektrika,
-  javnoPolnjenje: manualPrices.javnoPolnjenje,
+	elektrika: manualPrices.elektrika,
+	javnoPolnjenje: manualPrices.javnoPolnjenje,
 }

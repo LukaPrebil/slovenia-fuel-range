@@ -1,9 +1,9 @@
 {
-  "fuel": {
-    "validFrom": "2026-10-27",
-    "validTo": "2026-11-02",
-    "bencin": 1.627,
-    "dizel": 1.935,
-    "sourceUrl": "https://www.gov.si/teme/cene-naftnih-derivatov/element/162094/izvoz.csv"
-  }
+	"fuel": {
+		"validFrom": "2026-10-27",
+		"validTo": "2026-11-02",
+		"bencin": 1.627,
+		"dizel": 1.935,
+		"sourceUrl": "https://www.gov.si/teme/cene-naftnih-derivatov/element/162094/izvoz.csv"
+	}
 }

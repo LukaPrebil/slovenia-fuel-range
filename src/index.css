@@ -1,84 +1,79 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /* Theme is resolved in JS to an explicit data-theme so system, light and dark share one switch. */
-@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 :root {
-  color-scheme: light;
-  --surface: #ffffff;
-  --surface-raised: #f6f6f7;
-  --ink: #111111;
-  --ink-muted: #5f6368;
-  --rule: #e7e7e9;
-  --rule-faint: #f1f1f2;
-  --marker: #c4c4c4;
-  --bar-bencin: #8f8f8f;
-  --bar-dizel: #e8730c;
-  --bar-hibrid: #dc6a9c;
-  --bar-elektrika: #2b7bba;
-  --ink-bencin: #5c5c5c;
-  --ink-dizel: #a8480a;
-  --ink-hibrid: #a53a6d;
-  --ink-elektrika: #1b4f9c;
+	color-scheme: light;
+	--surface: #ffffff;
+	--surface-raised: #f6f6f7;
+	--ink: #111111;
+	--ink-muted: #5f6368;
+	--rule: #e7e7e9;
+	--rule-faint: #f1f1f2;
+	--marker: #c4c4c4;
+	--bar-bencin: #8f8f8f;
+	--bar-dizel: #e8730c;
+	--bar-hibrid: #dc6a9c;
+	--bar-elektrika: #2b7bba;
+	--ink-bencin: #5c5c5c;
+	--ink-dizel: #a8480a;
+	--ink-hibrid: #a53a6d;
+	--ink-elektrika: #1b4f9c;
 }
 
-[data-theme='dark'] {
-  color-scheme: dark;
-  --surface: #0c0c0d;
-  --surface-raised: #17171a;
-  --ink: #f4f4f5;
-  --ink-muted: #a1a1aa;
-  --rule: #27272a;
-  --rule-faint: #1d1d20;
-  --marker: #3f3f46;
-  --bar-bencin: #b0b0b0;
-  --bar-dizel: #f0873c;
-  --bar-hibrid: #e88ab7;
-  --bar-elektrika: #5aa9e6;
-  --ink-bencin: #c9c9c9;
-  --ink-dizel: #f4a163;
-  --ink-hibrid: #f0a5c9;
-  --ink-elektrika: #8cc4ef;
+[data-theme="dark"] {
+	color-scheme: dark;
+	--surface: #0c0c0d;
+	--surface-raised: #17171a;
+	--ink: #f4f4f5;
+	--ink-muted: #a1a1aa;
+	--rule: #27272a;
+	--rule-faint: #1d1d20;
+	--marker: #3f3f46;
+	--bar-bencin: #b0b0b0;
+	--bar-dizel: #f0873c;
+	--bar-hibrid: #e88ab7;
+	--bar-elektrika: #5aa9e6;
+	--ink-bencin: #c9c9c9;
+	--ink-dizel: #f4a163;
+	--ink-hibrid: #f0a5c9;
+	--ink-elektrika: #8cc4ef;
 }
 
 @theme inline {
-  --color-surface: var(--surface);
-  --color-raised: var(--surface-raised);
-  --color-ink: var(--ink);
-  --color-muted: var(--ink-muted);
-  --color-rule: var(--rule);
-  --color-rule-faint: var(--rule-faint);
-  --color-marker: var(--marker);
-  --color-bencin: var(--bar-bencin);
-  --color-dizel: var(--bar-dizel);
-  --color-hibrid: var(--bar-hibrid);
-  --color-elektrika: var(--bar-elektrika);
-  --color-ink-bencin: var(--ink-bencin);
-  --color-ink-dizel: var(--ink-dizel);
-  --color-ink-hibrid: var(--ink-hibrid);
-  --color-ink-elektrika: var(--ink-elektrika);
+	--color-surface: var(--surface);
+	--color-raised: var(--surface-raised);
+	--color-ink: var(--ink);
+	--color-muted: var(--ink-muted);
+	--color-rule: var(--rule);
+	--color-rule-faint: var(--rule-faint);
+	--color-marker: var(--marker);
+	--color-bencin: var(--bar-bencin);
+	--color-dizel: var(--bar-dizel);
+	--color-hibrid: var(--bar-hibrid);
+	--color-elektrika: var(--bar-elektrika);
+	--color-ink-bencin: var(--ink-bencin);
+	--color-ink-dizel: var(--ink-dizel);
+	--color-ink-hibrid: var(--ink-hibrid);
+	--color-ink-elektrika: var(--ink-elektrika);
 }
 
 body {
-  @apply bg-surface text-ink antialiased;
-  font-family:
-    system-ui,
-    -apple-system,
-    'Segoe UI',
-    Roboto,
-    sans-serif;
+	@apply bg-surface text-ink antialiased;
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		transition-duration: 0.01ms !important;
+	}
 }
 
 :focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 2px;
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
 }
