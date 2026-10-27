@@ -4,6 +4,7 @@ import type { Plugin } from 'vite'
 import { defineConfig } from 'vitest/config'
 
 // Shipped with the build only: the dev server needs inline scripts for Fast Refresh.
+// frame-ancestors is left out: browsers ignore it in a meta tag, and GitHub Pages cannot set headers.
 const CSP = [
   "default-src 'self'",
   "script-src 'self'",
@@ -13,7 +14,6 @@ const CSP = [
   "connect-src 'self'",
   "base-uri 'none'",
   "form-action 'none'",
-  "frame-ancestors 'none'",
 ].join('; ')
 
 function contentSecurityPolicy(): Plugin {
