@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import type { EnergyPrices } from '../../src/lib/calc.ts'
 import {
   ANNUAL_KM_DEFAULT,
   ANNUAL_KM_MAX,
@@ -10,7 +11,6 @@ import {
   toQuery,
   type ViewState,
 } from '../../src/lib/state.ts'
-import type { EnergyPrices } from '../../src/lib/calc.ts'
 
 const DEFAULTS: EnergyPrices = {
   bencin: 1.627,

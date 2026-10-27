@@ -1,5 +1,5 @@
 import { formatKm } from '../lib/format.ts'
-import { translate, type Language } from '../lib/i18n.ts'
+import { type Language, translate } from '../lib/i18n.ts'
 import { ANNUAL_KM_MAX, ANNUAL_KM_MIN, ANNUAL_KM_STEP } from '../lib/state.ts'
 
 export function AnnualKmSlider({

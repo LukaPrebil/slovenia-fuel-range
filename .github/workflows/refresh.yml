@@ -3,14 +3,14 @@ name: refresh
 on:
   schedule:
     # Regulated fuel prices change on Tuesdays and are published the day before.
-    - cron: '10 5 * * 1'
+    - cron: "10 5 * * 1"
     # The ARSO consumption list is a monthly edition.
-    - cron: '20 5 1 * *'
+    - cron: "20 5 1 * *"
   workflow_dispatch:
     inputs:
       target:
-        description: 'fuel, catalogue or all'
-        default: 'all'
+        description: "fuel, catalogue or all"
+        default: "all"
 
 permissions:
   contents: write

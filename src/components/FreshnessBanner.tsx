@@ -1,6 +1,6 @@
 import { formatDate, formatMonth } from '../lib/format.ts'
-import { translate, type Language } from '../lib/i18n.ts'
 import type { Freshness } from '../lib/freshness.ts'
+import { type Language, translate } from '../lib/i18n.ts'
 
 export function FreshnessBanner({
   language,

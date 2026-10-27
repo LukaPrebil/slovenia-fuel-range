@@ -3,8 +3,8 @@ import {
   normaliseElectricKwh,
   parseArsoXlsx,
   parseQuantity,
-  readAsOf,
   type Quantity,
+  readAsOf,
 } from '../../scripts/lib/arso-xlsx.ts'
 
 const FIXTURE = 'tests/fixtures/arso-wltp-2026-06.xlsx'

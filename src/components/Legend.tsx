@@ -1,4 +1,4 @@
-import { translate, type Language } from '../lib/i18n.ts'
+import { type Language, translate } from '../lib/i18n.ts'
 import { POWERTRAINS } from '../lib/types.ts'
 import { BAR_COLOUR, INK_COLOUR } from './powertrain.ts'
 

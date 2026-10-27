@@ -3,12 +3,12 @@ import {
   BAR_MAX_KM,
   barWidthPercent,
   consumptionFor,
+  type EnergyPrices,
   eurPer100km,
   eurPerYear,
   kmPer100Eur,
   priceFor,
   REAL_WORLD,
-  type EnergyPrices,
 } from '../../src/lib/calc.ts'
 
 const PRICES: EnergyPrices = {

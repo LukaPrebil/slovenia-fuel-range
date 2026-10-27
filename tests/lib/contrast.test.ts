@@ -23,10 +23,10 @@ describe.each([
   ['light', light],
   ['dark', dark],
 ])('contrast in the %s theme', (_name, theme) => {
-  const background = theme['surface'] ?? '#ffffff'
+  const background = theme.surface ?? '#ffffff'
 
   it('keeps body text and muted text at AA', () => {
-    expect(contrastRatio(theme['ink'] ?? '', background)).toBeGreaterThanOrEqual(4.5)
+    expect(contrastRatio(theme.ink ?? '', background)).toBeGreaterThanOrEqual(4.5)
     expect(contrastRatio(theme['ink-muted'] ?? '', background)).toBeGreaterThanOrEqual(4.5)
   })
 

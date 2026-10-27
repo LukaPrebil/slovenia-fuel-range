@@ -2,7 +2,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname } from 'node:path'
 import { ARSO_SOURCE_URL, parseArsoXlsx } from './lib/arso-xlsx.ts'
 import { buildCatalogue, type CatalogueFile } from './lib/catalogue.ts'
-import { FUEL_SOURCE_URL, parseFuelCsv, type FuelPrices } from './lib/fuel-csv.ts'
+import { FUEL_SOURCE_URL, type FuelPrices, parseFuelCsv } from './lib/fuel-csv.ts'
 
 const HERE = new URL('.', import.meta.url).pathname
 const ROOT = dirname(HERE)

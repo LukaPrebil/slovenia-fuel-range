@@ -1,7 +1,7 @@
 import { barWidthPercent } from '../lib/calc.ts'
 import type { ChartRow } from '../lib/chart.ts'
 import { formatEur, formatKm } from '../lib/format.ts'
-import { translate, type Language } from '../lib/i18n.ts'
+import { type Language, translate } from '../lib/i18n.ts'
 import { BAR_COLOUR, INK_COLOUR } from './powertrain.ts'
 
 export function BarRow({ row, language }: { row: ChartRow; language: Language }) {

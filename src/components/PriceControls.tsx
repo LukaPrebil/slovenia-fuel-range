@@ -1,5 +1,5 @@
 import type { EnergyPrices } from '../lib/calc.ts'
-import { translate, type Language } from '../lib/i18n.ts'
+import { type Language, translate } from '../lib/i18n.ts'
 import { PRICE_KEYS, type PriceKey } from '../lib/state.ts'
 
 const LABEL_KEY: Record<PriceKey, Parameters<typeof translate>[1]> = {

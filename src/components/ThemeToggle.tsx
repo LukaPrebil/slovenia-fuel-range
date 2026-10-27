@@ -1,4 +1,4 @@
-import { translate, type Language } from '../lib/i18n.ts'
+import { type Language, translate } from '../lib/i18n.ts'
 import { THEMES, type ThemePreference } from '../lib/theme.ts'
 
 const ICONS: Record<ThemePreference, string> = { light: '☀', dark: '☾', system: '⌂' }
@@ -13,9 +13,8 @@ export function ThemeToggle({
   onChange: (next: ThemePreference) => void
 }) {
   return (
-    <div
-      className="inline-flex overflow-hidden rounded-md border border-rule"
-      role="group"
+    <fieldset
+      className="m-0 inline-flex min-w-0 overflow-hidden rounded-md border border-rule p-0"
       aria-label={translate(language, 'theme.label')}
     >
       {THEMES.map((theme) => (
@@ -31,6 +30,6 @@ export function ThemeToggle({
           <span aria-hidden="true">{ICONS[theme]}</span> {translate(language, `theme.${theme}`)}
         </button>
       ))}
-    </div>
+    </fieldset>
   )
 }

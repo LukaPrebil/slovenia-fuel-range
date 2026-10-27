@@ -2,8 +2,8 @@ import { render, screen, within } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import { ChartPanel } from '../../src/components/ChartPanel.tsx'
 import { curatedRows, defaultPrices } from '../../src/data/load.ts'
-import { markersFor, panelRows, toChartRow } from '../../src/lib/chart.ts'
 import { barWidthPercent } from '../../src/lib/calc.ts'
+import { markersFor, panelRows, toChartRow } from '../../src/lib/chart.ts'
 import { formatKm } from '../../src/lib/format.ts'
 
 const rows = curatedRows.map((row) =>

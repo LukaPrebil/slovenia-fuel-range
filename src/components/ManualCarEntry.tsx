@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { translate, type Language } from '../lib/i18n.ts'
+import { type Language, translate } from '../lib/i18n.ts'
 import { POWERTRAINS, type Powertrain } from '../lib/types.ts'
 
 export function ManualCarEntry({

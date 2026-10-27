@@ -1,7 +1,7 @@
 import catalogueMeta from '../../data/catalogue-meta.json'
 import curatedCsv from '../../data/curated.csv?raw'
-import manualPrices from '../../data/prices-manual.json'
 import pricesFile from '../../data/prices.json'
+import manualPrices from '../../data/prices-manual.json'
 import type { EnergyPrices } from '../lib/calc.ts'
 import { parseCuratedCsv } from '../lib/curated.ts'
 import type { CuratedRow } from '../lib/types.ts'

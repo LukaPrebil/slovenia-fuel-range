@@ -2,9 +2,9 @@ import { useEffect, useMemo, useState } from 'react'
 import { AnnualKmSlider } from './components/AnnualKmSlider.tsx'
 import { CarSearch } from './components/CarSearch.tsx'
 import { ChartPanel } from './components/ChartPanel.tsx'
+import { FreshnessBanner } from './components/FreshnessBanner.tsx'
 import { LanguageToggle } from './components/LanguageToggle.tsx'
 import { Legend } from './components/Legend.tsx'
-import { FreshnessBanner } from './components/FreshnessBanner.tsx'
 import { ManualCarEntry } from './components/ManualCarEntry.tsx'
 import { PanelSwitch } from './components/PanelSwitch.tsx'
 import { PriceControls } from './components/PriceControls.tsx'
@@ -13,19 +13,19 @@ import { Sources } from './components/Sources.tsx'
 import { ThemeToggle } from './components/ThemeToggle.tsx'
 import { catalogueAsOf, curatedRows, defaultPrices, fuelWindow } from './data/load.ts'
 import {
+  type ChartRow,
   MARKERS,
   markersFor,
   panelRows,
   personalRow,
   toChartRow,
-  type ChartRow,
 } from './lib/chart.ts'
 import { formatKm, formatOne, formatPrice } from './lib/format.ts'
 import { freshnessOf } from './lib/freshness.ts'
 import { translate } from './lib/i18n.ts'
+import type { PanelId } from './lib/types.ts'
 import { useTheme } from './lib/useTheme.ts'
 import { useViewState } from './lib/useViewState.ts'
-import type { PanelId } from './lib/types.ts'
 import './styles/chart.css'
 
 export default function App() {

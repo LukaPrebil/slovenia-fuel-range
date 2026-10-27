@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { loadCatalogue } from '../data/loadCatalogue.ts'
-import { translate, type Language } from '../lib/i18n.ts'
-import { keyOf, searchCatalogue, type Catalogue, type SearchHit } from '../lib/search.ts'
+import { type Language, translate } from '../lib/i18n.ts'
+import { type Catalogue, keyOf, type SearchHit, searchCatalogue } from '../lib/search.ts'
 
 export function CarSearch({
   language,

@@ -1,4 +1,4 @@
-import { translate, type Language } from '../lib/i18n.ts'
+import { type Language, translate } from '../lib/i18n.ts'
 
 export function RealWorldToggle({
   value,

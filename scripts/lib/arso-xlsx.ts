@@ -96,7 +96,7 @@ export function readAsOf(title: string): string {
     throw new Error(`Cannot read the month from the sheet title: ${JSON.stringify(title)}`)
   }
   const monthName = (match[1] ?? '').toLowerCase()
-  const month = SL_MONTHS.findIndex((name) => name === monthName)
+  const month = SL_MONTHS.indexOf(monthName)
   if (month === -1) {
     throw new Error(`Unknown Slovenian month in the sheet title: ${JSON.stringify(title)}`)
   }

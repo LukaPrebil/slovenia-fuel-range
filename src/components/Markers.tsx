@@ -1,7 +1,7 @@
 import { barWidthPercent } from '../lib/calc.ts'
 import type { Marker } from '../lib/chart.ts'
 import { formatKm } from '../lib/format.ts'
-import { translate, type Language } from '../lib/i18n.ts'
+import { type Language, translate } from '../lib/i18n.ts'
 
 /**
  * The label is a two-line block centred on its dashed line. A narrow plot cannot

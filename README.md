@@ -26,8 +26,8 @@ npm ci
 npm run dev          # lokalni strežnik
 npm run test         # vitest
 npm run typecheck    # tsc -b
-npm run lint         # oxlint
-npm run format:check # prettier
+npm run check        # biome: lint, imports, formatting
+npm run check:fix    # biome, writing the fixes
 npm run build:data   # osveži cene goriv in katalog iz uradnih virov
 npm run validate:data
 ```

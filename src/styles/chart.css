@@ -32,8 +32,8 @@
   .chart-row {
     grid-template-columns: minmax(0, 1fr) auto;
     grid-template-areas:
-      'label value'
-      'track track';
+      "label value"
+      "track track";
     row-gap: 0.3rem;
     column-gap: 0.5rem;
     padding-block: 0.5rem;
@@ -121,8 +121,8 @@
 
 /* A phone shows one panel at a time; a wide screen always shows both. */
 @media (max-width: 1023px) {
-  .panels[data-panel='a'] .chart-panel[data-panel='B'],
-  .panels[data-panel='b'] .chart-panel[data-panel='A'] {
+  .panels[data-panel="a"] .chart-panel[data-panel="B"],
+  .panels[data-panel="b"] .chart-panel[data-panel="A"] {
     display: none;
   }
 }

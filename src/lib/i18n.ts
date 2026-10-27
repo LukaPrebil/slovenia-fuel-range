@@ -1,5 +1,5 @@
 import { en } from '../i18n/en.ts'
-import { sl, type MessageKey, type Messages } from '../i18n/sl.ts'
+import { type MessageKey, type Messages, sl } from '../i18n/sl.ts'
 
 export type Language = 'sl' | 'en'
 

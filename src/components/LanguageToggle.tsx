@@ -1,4 +1,4 @@
-import { LANGUAGES, translate, type Language } from '../lib/i18n.ts'
+import { LANGUAGES, type Language, translate } from '../lib/i18n.ts'
 
 export function LanguageToggle({
   value,
@@ -8,9 +8,8 @@ export function LanguageToggle({
   onChange: (next: Language) => void
 }) {
   return (
-    <div
-      className="inline-flex overflow-hidden rounded-md border border-rule"
-      role="group"
+    <fieldset
+      className="m-0 inline-flex min-w-0 overflow-hidden rounded-md border border-rule p-0"
       aria-label={translate(value, 'language.label')}
     >
       {LANGUAGES.map((language) => (
@@ -26,6 +25,6 @@ export function LanguageToggle({
           {language}
         </button>
       ))}
-    </div>
+    </fieldset>
   )
 }

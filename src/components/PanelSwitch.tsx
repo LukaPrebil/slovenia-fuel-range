@@ -1,4 +1,4 @@
-import { translate, type Language } from '../lib/i18n.ts'
+import { type Language, translate } from '../lib/i18n.ts'
 import type { PanelView } from '../lib/state.ts'
 
 /** Only phones need this: a wide screen fits both panels side by side. */
@@ -12,9 +12,8 @@ export function PanelSwitch({
   onChange: (panel: PanelView) => void
 }) {
   return (
-    <div
-      className="mb-2 inline-flex overflow-hidden rounded-md border border-rule lg:hidden"
-      role="group"
+    <fieldset
+      className="m-0 mb-2 inline-flex min-w-0 overflow-hidden rounded-md border border-rule p-0 lg:hidden"
       aria-label={translate(language, 'panel.switch')}
     >
       {(['a', 'b'] as const).map((panel) => (
@@ -30,6 +29,6 @@ export function PanelSwitch({
           {translate(language, `panel.${panel}.title`)}
         </button>
       ))}
-    </div>
+    </fieldset>
   )
 }

@@ -1,11 +1,11 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import {
+  type Catalogue,
   familyOf,
   keyOf,
   normalise,
   searchCatalogue,
-  type Catalogue,
 } from '../../src/lib/search.ts'
 
 const catalogue = JSON.parse(readFileSync('data/catalogue.json', 'utf8')) as Catalogue
