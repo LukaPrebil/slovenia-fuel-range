@@ -84,6 +84,13 @@ The code is MIT licensed, see [LICENSE](LICENSE).
 The data in `data/` is CC BY 4.0, see [LICENSE-DATA](LICENSE-DATA). It derives from ARSO, gov.si, SURS,
 Petrol, AMZS, Delo, ADAC and OSRM, each credited per row or per file.
 
+## Node version
+
+`.nvmrc` holds the major, and `engines` plus `@types/node` follow it. The workflows read
+`node-version-file: .nvmrc`, so CI, Pages and the data refresh all run what a local `nvm use` gives
+you. `tests/toolchain.test.ts` fails if the four drift apart, so a Node bump means editing all four
+in one commit.
+
 ## Dependencies
 
 Dependabot opens grouped npm pull requests every Monday and action updates monthly. Both carry
