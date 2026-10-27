@@ -14,6 +14,11 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
 
 jobs:
   refresh:
@@ -37,14 +42,43 @@ jobs:
       - run: npm run validate:data -- --max-size
       - run: npm run test
 
-      - name: Commit when the numbers moved
+      # main requires a pull request, so the refresh arrives as one and merges itself once CI passes.
+      - name: Open or update the refresh pull request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if git diff --quiet -- data; then
             echo "nothing changed upstream"
             exit 0
           fi
+
+          window=$(node -e "const p=require('./data/prices.json');console.log(p.fuel.validFrom + ' to ' + p.fuel.validTo)")
+          as_of=$(node -e "console.log(require('./data/catalogue-meta.json').asOf)")
+
+          body=$(mktemp)
+          {
+            echo "Automatic refresh from gov.si and ARSO."
+            echo
+            echo "- Fuel prices valid ${window}"
+            echo "- Catalogue edition ${as_of}"
+            echo
+            echo "Merges automatically once the checks pass."
+          } > "$body"
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c data-refresh
           git add data
           git commit -m "chore(data): refresh prices and catalogue"
-          git push
+          git push --force origin data-refresh
+
+          existing=$(gh pr list --head data-refresh --state open --json number --jq '.[0].number // ""')
+          if [ -z "$existing" ]; then
+            gh pr create --base main --head data-refresh \
+              --title "chore(data): refresh prices and catalogue" \
+              --body-file "$body"
+          else
+            echo "updated existing pull request #${existing}"
+          fi
+
+          gh pr merge data-refresh --squash --auto
