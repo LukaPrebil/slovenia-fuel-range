@@ -18,6 +18,7 @@ function renderPanel(panel: 'A' | 'B') {
         subtitle="Test"
         rows={panelRowList}
         markers={markersFor(true)}
+        language="sl"
       />,
     ),
     panelRowList,

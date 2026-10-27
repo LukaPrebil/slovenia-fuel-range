@@ -1,4 +1,5 @@
-import type { ChartRow } from '../lib/chart.ts'
+import type { ChartRow, Marker } from '../lib/chart.ts'
+import type { Language } from '../lib/i18n.ts'
 import type { PanelId } from '../lib/types.ts'
 import { BarRow } from './BarRow.tsx'
 import { Markers } from './Markers.tsx'
@@ -8,10 +9,11 @@ export type ChartPanelProps = {
   title: string
   subtitle: string
   rows: ChartRow[]
-  markers: { km: number; label: string }[]
+  markers: Marker[]
+  language: Language
 }
 
-export function ChartPanel({ panel, title, subtitle, rows, markers }: ChartPanelProps) {
+export function ChartPanel({ panel, title, subtitle, rows, markers, language }: ChartPanelProps) {
   return (
     <section
       className="chart-panel"
@@ -23,7 +25,7 @@ export function ChartPanel({ panel, title, subtitle, rows, markers }: ChartPanel
       </h2>
       <p className="mt-0.5 mb-2 text-xs text-muted">{subtitle}</p>
       <div className="chart-plot pt-9">
-        <Markers markers={markers} />
+        <Markers markers={markers} language={language} />
         <ol>
           {rows.map((row) => (
             <BarRow key={row.key} row={row} />

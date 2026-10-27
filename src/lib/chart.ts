@@ -48,14 +48,18 @@ export function panelRows(rows: ChartRow[], panel: PanelId): ChartRow[] {
   return rows.filter((row) => row.panel === panel).sort((left, right) => right.km - left.km)
 }
 
-/** Road km from Ljubljana, OSRM. */
-export const MARKERS = [
-  { km: 376, label: 'Dunaj' },
-  { km: 756, label: 'Rim' },
-  { km: 1250, label: 'Pariz' },
-  { km: 2619, label: 'Lizbona' },
-] as const
+export type CityId = 'dunaj' | 'rim' | 'pariz' | 'lizbona'
 
-export function markersFor(compact: boolean): { km: number; label: string }[] {
+export type Marker = { city: CityId; km: number }
+
+/** Road km from Ljubljana, OSRM. */
+export const MARKERS: readonly Marker[] = [
+  { city: 'dunaj', km: 376 },
+  { city: 'rim', km: 756 },
+  { city: 'pariz', km: 1250 },
+  { city: 'lizbona', km: 2619 },
+]
+
+export function markersFor(compact: boolean): Marker[] {
   return MARKERS.filter((marker) => !compact || marker.km >= 1250).map((marker) => ({ ...marker }))
 }

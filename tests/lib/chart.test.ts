@@ -33,11 +33,11 @@ describe('chart rows', () => {
   })
 
   it('shortens the marker set in the compact layout', () => {
-    expect(markersFor(false).map((marker) => marker.label)).toEqual([
-      'Dunaj',
-      'Rim',
-      'Pariz',
-      'Lizbona',
+    expect(markersFor(false).map((marker) => marker.city)).toEqual([
+      'dunaj',
+      'rim',
+      'pariz',
+      'lizbona',
     ])
     expect(markersFor(true).map((marker) => marker.km)).toEqual([1250, 2619])
   })
