@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { loadCatalogue } from '../data/loadCatalogue.ts'
 import { translate, type Language } from '../lib/i18n.ts'
-import { searchCatalogue, type Catalogue, type SearchHit } from '../lib/search.ts'
+import { keyOf, searchCatalogue, type Catalogue, type SearchHit } from '../lib/search.ts'
 
 export function CarSearch({
   language,
@@ -59,7 +59,7 @@ export function CarSearch({
       {open && hits.length > 0 && (
         <ul className="absolute z-10 mt-1 max-h-72 w-full overflow-auto rounded border border-rule bg-surface shadow-lg">
           {hits.map((hit) => (
-            <li key={`${hit.entry.brand}-${hit.entry.model}-${hit.entry.powertrain}`}>
+            <li key={keyOf(hit.entry)}>
               <button
                 type="button"
                 onClick={() => {

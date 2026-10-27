@@ -1,6 +1,12 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
-import { normalise, searchCatalogue, type Catalogue } from '../../src/lib/search.ts'
+import {
+  familyOf,
+  keyOf,
+  normalise,
+  searchCatalogue,
+  type Catalogue,
+} from '../../src/lib/search.ts'
 
 const catalogue = JSON.parse(readFileSync('data/catalogue.json', 'utf8')) as Catalogue
 
@@ -9,6 +15,14 @@ describe('normalise', () => {
     expect(normalise('ŠKODA Octavia')).toBe('skoda octavia')
     expect(normalise('Citroën C3')).toBe('citroen c3')
     expect(normalise('  Clio  ')).toBe('clio')
+  })
+})
+
+describe('familyOf', () => {
+  it('takes the first word of the model', () => {
+    expect(familyOf('Karoq Edition 1.0 TSI')).toBe('karoq')
+    expect(familyOf('KANGOO / 1.3 / 16V')).toBe('kangoo')
+    expect(familyOf('Octavia Combi Essence 1.5 TSI')).toBe('octavia')
   })
 })
 
@@ -24,10 +38,32 @@ describe('searchCatalogue', () => {
     expect(hits.some((hit) => hit.entry.brand === 'CITROËN')).toBe(true)
   })
 
-  it('ranks a prefix hit above a word-start hit', () => {
-    const hits = searchCatalogue(catalogue.entries, 'golf')
+  it('puts a model whose name starts with the query above a mid-word match', () => {
+    const hits = searchCatalogue(catalogue.entries, 'karoq')
     expect(hits.length).toBeGreaterThan(0)
-    expect(hits[0]!.rank).toBeLessThanOrEqual(1)
+    expect(hits.every((hit) => normalise(hit.entry.model).startsWith('karoq'))).toBe(true)
+  })
+
+  it('keeps a popular model reachable from a two-letter query', () => {
+    // Reported bug: "ka" filled the list with KANGOO and pushed Karoq out entirely.
+    const hits = searchCatalogue(catalogue.entries, 'ka')
+    const models = hits.map((hit) => familyOf(hit.entry.model))
+    expect(models).toContain('karoq')
+    expect(models).toContain('kamiq')
+    expect(models.filter((model) => model === 'kangoo').length).toBeLessThanOrEqual(4)
+  })
+
+  it('never repeats a key, so React can key the list safely', () => {
+    for (const query of ['kangoo', 'ka', 'octavia', 'tesla']) {
+      const keys = searchCatalogue(catalogue.entries, query).map((hit) => keyOf(hit.entry))
+      expect(new Set(keys).size).toBe(keys.length)
+    }
+  })
+
+  it('ranks a brand match above a mid-word match', () => {
+    const hits = searchCatalogue(catalogue.entries, 'tesla')
+    expect(hits[0]?.rank).toBe(1)
+    expect(hits.every((hit) => hit.rank <= 1)).toBe(true)
   })
 
   it('ignores a query shorter than two characters and caps the list', () => {
