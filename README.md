@@ -26,7 +26,7 @@ npm ci
 npm run dev          # lokalni strežnik
 npm run test         # vitest
 npm run typecheck    # tsc -b
-npm run check        # biome: lint, imports, formatting
+npm run check        # biome: lint, imports, formatting; fails on any warning
 npm run check:fix    # biome, writing the fixes
 npm run build:data   # osveži cene goriv in katalog iz uradnih virov
 npm run validate:data

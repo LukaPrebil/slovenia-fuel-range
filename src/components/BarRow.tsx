@@ -2,37 +2,37 @@ import { barWidthPercent } from '../lib/calc.ts'
 import type { ChartRow } from '../lib/chart.ts'
 import { formatEur, formatKm } from '../lib/format.ts'
 import { type Language, translate } from '../lib/i18n.ts'
-import { BAR_COLOUR, INK_COLOUR } from './powertrain.ts'
 
 export function BarRow({ row, language }: { row: ChartRow; language: Language }) {
+	const model = row.personalSource === 'manual' ? translate(language, 'car.manualLabel') : row.model
+
 	return (
 		<li
-			className={`chart-row py-1.5 ${row.personal ? 'bg-raised ring-1 ring-ink/25' : ''}`}
+			className="chart-row py-1.5"
 			data-testid="chart-row"
 			data-powertrain={row.powertrain}
+			data-personal={row.personal || undefined}
 		>
 			<div className="chart-label min-w-0">
 				<span className="block truncate text-sm font-semibold">
-					{row.model}
+					{model}
 					{row.personal && (
-						<span className="ml-1 rounded bg-ink px-1 py-0.5 align-middle text-[0.6rem] font-semibold text-surface">
+						<span className="chart-badge ml-1 rounded bg-ink px-1 py-0.5 align-middle font-semibold text-surface">
 							{translate(language, 'car.personal')}
 						</span>
 					)}
 				</span>
-				<span className={`block truncate text-xs ${INK_COLOUR[row.powertrain]}`}>
-					{row.variant}
-				</span>
+				<span className="chart-variant block truncate text-xs">{row.variant}</span>
 			</div>
 			<div className="chart-track">
 				<div
-					className={`chart-bar ${BAR_COLOUR[row.powertrain]}`}
+					className="chart-bar"
 					style={{ width: `${barWidthPercent(row.km)}%` }}
 					data-testid="bar"
 				/>
 				{row.publicKm !== null && (
 					<div
-						className={`chart-ghost ${BAR_COLOUR[row.powertrain]} bottom-[-0.35rem]`}
+						className="chart-ghost"
 						style={{ width: `${barWidthPercent(row.publicKm)}%` }}
 						data-testid="ghost"
 					/>
@@ -45,7 +45,7 @@ export function BarRow({ row, language }: { row: ChartRow; language: Language })
 				<span className="block text-xs text-muted">
 					{formatEur(row.eurPer100, language)} €/100 km
 				</span>
-				<span className="block text-[0.65rem] text-muted">
+				<span className="chart-year block text-muted">
 					{translate(language, 'unit.perYear', { eur: formatEur(row.eurPerYear, language) })}
 				</span>
 			</div>

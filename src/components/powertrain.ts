@@ -1,19 +1,11 @@
 import type { Powertrain } from '../lib/types.ts'
 
-export const BAR_COLOUR: Record<Powertrain, string> = {
-	bencin: 'bg-bencin',
-	dizel: 'bg-dizel',
-	hibrid: 'bg-hibrid',
-	elektrika: 'bg-elektrika',
-}
+export const POWERTRAIN_ORDER: readonly Powertrain[] = ['bencin', 'dizel', 'hibrid', 'elektrika']
 
-export const INK_COLOUR: Record<Powertrain, string> = {
-	bencin: 'text-ink-bencin',
-	dizel: 'text-ink-dizel',
-	hibrid: 'text-ink-hibrid',
-	elektrika: 'text-ink-elektrika',
-}
-
+/**
+ * Colours are CSS custom properties keyed by `data-powertrain` (see index.css), so
+ * no class name is assembled at runtime and the palette lives in one place.
+ */
 export const POWERTRAIN_LABEL: Record<Powertrain, string> = {
 	bencin: 'bencin',
 	dizel: 'dizel',

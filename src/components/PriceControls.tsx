@@ -52,7 +52,7 @@ export function PriceControls({
 					return (
 						<div key={key}>
 							<div className="flex items-baseline justify-between gap-1">
-								<label htmlFor={`price-${key}`} className="block text-[0.7rem] text-muted">
+								<label htmlFor={`price-${key}`} className="price-label block text-muted">
 									{label}
 								</label>
 								{overridden && (
@@ -61,7 +61,7 @@ export function PriceControls({
 										onClick={() => onChange(key, null)}
 										aria-label={translate(language, 'prices.resetOne')}
 										title={translate(language, 'prices.overridden')}
-										className="rounded px-0.5 text-[0.7rem] text-ink underline decoration-dotted"
+										className="price-label rounded px-0.5 text-ink underline decoration-dotted"
 									>
 										↺
 									</button>
@@ -80,9 +80,8 @@ export function PriceControls({
 									const value = Number(raw.replace(',', '.'))
 									onChange(key, raw === '' || !Number.isFinite(value) ? null : value)
 								}}
-								className={`mt-0.5 w-full rounded border px-2 py-1 text-sm tabular-nums ${
-									overridden ? 'border-ink font-semibold' : 'border-rule'
-								} bg-surface`}
+								data-overridden={overridden}
+								className="price-input mt-0.5 w-full rounded border border-rule bg-surface px-2 py-1 text-sm tabular-nums"
 							/>
 						</div>
 					)

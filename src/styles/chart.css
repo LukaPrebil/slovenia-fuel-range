@@ -114,6 +114,7 @@
 .chart-ghost {
 	position: absolute;
 	left: 0;
+	bottom: -0.35rem;
 	height: 0.2rem;
 	border-radius: 999px;
 	opacity: 0.38;

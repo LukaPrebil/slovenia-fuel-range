@@ -49,6 +49,7 @@ export const en: Messages = {
 	'car.manualHeading': 'Not on the list?',
 	'car.manualPowertrain': 'Powertrain',
 	'car.manualConsumption': 'Consumption (per 100 km)',
+	'car.manualLabel': 'Manual entry',
 	'car.manualApply': 'Show my car',
 	'car.clear': 'Remove my car',
 	'car.personal': 'your car',

@@ -68,12 +68,89 @@ body {
 	*,
 	*::before,
 	*::after {
-		animation-duration: 0.01ms !important;
-		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms;
+		transition-duration: 0.01ms;
 	}
 }
 
 :focus-visible {
 	outline: 2px solid currentColor;
 	outline-offset: 2px;
+}
+
+/* Powertrain colours live here once: a data attribute selects the pair, the
+   element decides whether it wants the bar colour or the text colour. */
+[data-powertrain="bencin"] {
+	--bar: var(--bar-bencin);
+	--ink: var(--ink-bencin);
+}
+
+[data-powertrain="dizel"] {
+	--bar: var(--bar-dizel);
+	--ink: var(--ink-dizel);
+}
+
+[data-powertrain="hibrid"] {
+	--bar: var(--bar-hibrid);
+	--ink: var(--ink-hibrid);
+}
+
+[data-powertrain="elektrika"] {
+	--bar: var(--bar-elektrika);
+	--ink: var(--ink-elektrika);
+}
+
+.chart-bar,
+.chart-ghost,
+.legend-swatch {
+	background-color: var(--bar);
+}
+
+.chart-variant,
+.legend-label {
+	color: var(--ink);
+}
+
+.chart-badge {
+	font-size: 0.6rem;
+}
+
+.chart-year {
+	font-size: 0.65rem;
+}
+
+.chart-marker-km {
+	font-size: 0.6rem;
+}
+
+/* A segmented control is three buttons with one active at a time. */
+.segmented button {
+	color: var(--ink-muted);
+}
+
+.segmented button:hover {
+	background-color: var(--surface-raised);
+}
+
+.segmented button[data-active="true"] {
+	background-color: var(--ink);
+	color: var(--surface);
+}
+
+.segmented button[data-active="true"]:hover {
+	background-color: var(--ink);
+}
+
+.price-input[data-overridden="true"] {
+	border-color: var(--ink);
+	font-weight: 600;
+}
+
+.price-label {
+	font-size: 0.7rem;
+}
+
+.chart-row[data-personal] {
+	background-color: var(--surface-raised);
+	box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 25%, transparent);
 }

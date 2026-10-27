@@ -20,9 +20,7 @@ export function RealWorldToggle({
 				/>
 				<span>{translate(language, 'controls.realWorld')}</span>
 			</label>
-			<p className="mt-1 text-[0.7rem] text-muted">
-				{translate(language, 'controls.realWorldHint')}
-			</p>
+			<p className="price-label mt-1 text-muted">{translate(language, 'controls.realWorldHint')}</p>
 		</div>
 	)
 }
