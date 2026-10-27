@@ -2,6 +2,7 @@
 	"name": "slovenia-fuel-range",
 	"private": true,
 	"version": "0.0.0",
+	"license": "MIT",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
@@ -18,6 +19,9 @@
 		"build:data": "node scripts/build-data.ts",
 		"validate:data": "node scripts/validate-data.ts",
 		"prepare": "husky"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx,json,jsonc,css}": "biome check --write --error-on-warnings --no-errors-on-unmatched"
 	},
 	"dependencies": {
 		"react": "^19.3.1",
@@ -44,8 +48,5 @@
 		"typescript": "~7.0.2",
 		"vite": "^8.3.5",
 		"vitest": "^5.0.5"
-	},
-	"lint-staged": {
-		"*.{js,jsx,ts,tsx,json,jsonc,css}": "biome check --write --error-on-warnings --no-errors-on-unmatched"
 	}
 }

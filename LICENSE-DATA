@@ -1,0 +1,30 @@
+# Data licence
+
+The data in `data/` is licensed under the Creative Commons Attribution 4.0
+International licence (CC BY 4.0).
+
+Licence text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+You may share and adapt the data for any purpose, including commercial use,
+provided you give appropriate credit, link to the licence, and indicate what
+you changed.
+
+## Attribution
+
+> Data from Slovenia Fuel Range by Luka Prebil Grintal, licensed under CC BY
+> 4.0. Derived from the ARSO/MOPE model list, gov.si petroleum product prices,
+> SURS electricity prices, the Petrol charging price list, AMZS Motorevija
+> sales figures, a Delo estimate of the fleet by model, ADAC Autokatalog
+> figures for older generations, and OSRM road distances. Consumption figures
+> converted from NEDC to WLTP with a factor of 1.21.
+
+## What the upstream sources require
+
+- ARSO/MOPE and gov.si publish under CC BY 4.0. Their attribution is required in
+  any reuse and is kept per row in `data/curated.csv` and per file in
+  `data/catalogue.json` and `data/prices.json`.
+- SURS, Petrol, AMZS, Delo and ADAC figures are quoted facts with the source
+  named in the same files. Neither the original publishers nor the sources list
+  endorse this project.
+- The fleet by model in panel B is an estimate, not official statistics. Do not
+  present it as a SURS dataset.

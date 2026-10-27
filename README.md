@@ -76,3 +76,10 @@ head, so `--no-verify` does not get anything through.
 The code is TypeScript. Scripts in `scripts/` run on plain Node, which strips the types itself, so no
 build step sits between the source and the run. The page is Vite, React and Tailwind, with Biome for
 linting and formatting and Vitest for tests.
+
+## Licence
+
+The code is MIT licensed, see [LICENSE](LICENSE).
+
+The data in `data/` is CC BY 4.0, see [LICENSE-DATA](LICENSE-DATA). It derives from ARSO, gov.si, SURS,
+Petrol, AMZS, Delo, ADAC and OSRM, each credited per row or per file.
