@@ -1,0 +1,42 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Ljubljana
+    open-pull-requests-limit: 5
+    commit-message:
+      # Conventional commits, so commitlint and the CI check stay happy.
+      prefix: chore
+      include: scope
+    labels:
+      - dependencies
+    groups:
+      runtime:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+      development:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+      time: "06:00"
+      timezone: Europe/Ljubljana
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: ci
+      include: scope
+    labels:
+      - dependencies
+      - ci
