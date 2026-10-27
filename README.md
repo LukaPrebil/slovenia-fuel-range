@@ -32,4 +32,14 @@ npm run build:data   # osveži cene goriv in katalog iz uradnih virov
 npm run validate:data
 ```
 
+Kljuke tečejo prek Huskyja:
+
+| Kljuka     | Kaj teče                                                                    | Čas       |
+| ---------- | --------------------------------------------------------------------------- | --------- |
+| pre-commit | `lint-staged`: Biome na nastavljenih datotekah, popravki se znova nastavijo | pod 1 s   |
+| commit-msg | `commitlint` s konvencijo conventional commits                              | takoj     |
+| pre-push   | `check`, `build` in `test`                                                  | okoli 3 s |
+
+CI ponovi iste korake in preveri še sporočila commitov na veji, zato `--no-verify` ne pomaga.
+
 Koda je v TypeScriptu, skripte v `scripts/` poganja Node neposredno (brez prevajalnika).
