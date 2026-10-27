@@ -16,7 +16,7 @@ export type ChartPanelProps = {
 export function ChartPanel({ panel, title, subtitle, rows, markers, language }: ChartPanelProps) {
 	return (
 		<section
-			className="chart-panel"
+			className="chart-panel rounded-xl border border-card-border p-4 sm:p-5"
 			aria-labelledby={`panel-${panel}`}
 			data-testid={`panel-${panel}`}
 			data-panel={panel}

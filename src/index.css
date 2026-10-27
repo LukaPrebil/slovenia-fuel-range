@@ -10,6 +10,7 @@
 	--ink: #111111;
 	--ink-muted: #5f6368;
 	--rule: #e7e7e9;
+	--card-border: #d7d7dd;
 	--rule-faint: #f1f1f2;
 	--marker: #c4c4c4;
 	--bar-bencin: #8f8f8f;
@@ -29,6 +30,7 @@
 	--ink: #f4f4f5;
 	--ink-muted: #a1a1aa;
 	--rule: #27272a;
+	--card-border: #3a3a41;
 	--rule-faint: #1d1d20;
 	--marker: #3f3f46;
 	--bar-bencin: #b0b0b0;
@@ -47,6 +49,7 @@
 	--color-ink: var(--ink);
 	--color-muted: var(--ink-muted);
 	--color-rule: var(--rule);
+	--color-card-border: var(--card-border);
 	--color-rule-faint: var(--rule-faint);
 	--color-marker: var(--marker);
 	--color-bencin: var(--bar-bencin);
