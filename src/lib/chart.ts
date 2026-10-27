@@ -24,6 +24,8 @@ export type ChartRow = {
 	/** EV rows also show what public charging costs them. */
 	publicKm: number | null
 	personal: boolean
+	/** A manual row has no brand to show, so the label comes from i18n. */
+	personalSource?: 'catalogue' | 'manual'
 }
 
 export type RowOptions = {
@@ -76,6 +78,7 @@ export function personalRow(car: PersonalCar, options: RowOptions): ChartRow {
 				? kmPer100Eur(options.prices.javnoPolnjenje, consumption)
 				: null,
 		personal: true,
+		personalSource: car.source,
 	}
 }
 

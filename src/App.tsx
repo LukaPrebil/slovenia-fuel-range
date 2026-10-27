@@ -130,7 +130,10 @@ export default function App() {
 						{state.car && (
 							<p className="flex flex-wrap items-center gap-2 text-xs">
 								<span className="font-semibold">
-									{t('car.resultLabel', { model: state.car.label, variant: state.car.detail })}
+									{t('car.resultLabel', {
+										model: state.car.source === 'manual' ? t('car.manualLabel') : state.car.label,
+										variant: state.car.detail,
+									})}
 								</span>
 								<button
 									type="button"

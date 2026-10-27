@@ -14,7 +14,7 @@ export function ThemeToggle({
 }) {
 	return (
 		<fieldset
-			className="m-0 inline-flex min-w-0 overflow-hidden rounded-md border border-rule p-0"
+			className="segmented m-0 inline-flex min-w-0 overflow-hidden rounded-md border border-rule p-0"
 			aria-label={translate(language, 'theme.label')}
 		>
 			{THEMES.map((theme) => (
@@ -23,9 +23,8 @@ export function ThemeToggle({
 					type="button"
 					onClick={() => onChange(theme)}
 					aria-pressed={value === theme}
-					className={`px-2 py-1 text-xs ${
-						value === theme ? 'bg-ink text-surface' : 'text-muted hover:bg-raised'
-					}`}
+					data-active={value === theme}
+					className="px-2 py-1 text-xs"
 				>
 					<span aria-hidden="true">{ICONS[theme]}</span> {translate(language, `theme.${theme}`)}
 				</button>

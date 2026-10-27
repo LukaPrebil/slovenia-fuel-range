@@ -48,6 +48,7 @@ export const sl = {
 	'car.manualHeading': 'Ni na seznamu?',
 	'car.manualPowertrain': 'Pogon',
 	'car.manualConsumption': 'Poraba (na 100 km)',
+	'car.manualLabel': 'Ročni vnos',
 	'car.manualApply': 'Prikaži moj avto',
 	'car.clear': 'Odstrani svoj avto',
 	'car.personal': 'tvoj avto',

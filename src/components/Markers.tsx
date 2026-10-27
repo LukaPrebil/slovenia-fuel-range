@@ -23,7 +23,7 @@ export function Markers({ markers, language }: { markers: Marker[]; language: La
 						<span className="block leading-tight">
 							{translate(language, `city.${marker.city}`)}
 						</span>
-						<span className="block text-[0.6rem] leading-tight opacity-80">
+						<span className="chart-marker-km block leading-tight opacity-80">
 							{formatKm(marker.km, language)} km
 						</span>
 					</span>

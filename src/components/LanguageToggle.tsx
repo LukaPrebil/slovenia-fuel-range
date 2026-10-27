@@ -9,7 +9,7 @@ export function LanguageToggle({
 }) {
 	return (
 		<fieldset
-			className="m-0 inline-flex min-w-0 overflow-hidden rounded-md border border-rule p-0"
+			className="segmented m-0 inline-flex min-w-0 overflow-hidden rounded-md border border-rule p-0"
 			aria-label={translate(value, 'language.label')}
 		>
 			{LANGUAGES.map((language) => (
@@ -18,9 +18,8 @@ export function LanguageToggle({
 					type="button"
 					onClick={() => onChange(language)}
 					aria-pressed={value === language}
-					className={`px-2 py-1 text-xs uppercase ${
-						value === language ? 'bg-ink text-surface' : 'text-muted hover:bg-raised'
-					}`}
+					data-active={value === language}
+					className="px-2 py-1 text-xs uppercase"
 				>
 					{language}
 				</button>
