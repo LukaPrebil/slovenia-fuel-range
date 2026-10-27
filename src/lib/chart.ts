@@ -1,5 +1,5 @@
 import type { EnergyPrices } from './calc.ts'
-import { consumptionFor, eurPer100km, kmPer100Eur, priceFor } from './calc.ts'
+import { consumptionFor, eurPer100km, eurPerYear, kmPer100Eur, priceFor } from './calc.ts'
 import type { CuratedRow, PanelId, Powertrain } from './types.ts'
 
 export type ChartRow = {
@@ -12,6 +12,7 @@ export type ChartRow = {
   consumption: number
   km: number
   eurPer100: number
+  eurPerYear: number
   /** EV rows also show what public charging costs them. */
   publicKm: number | null
   personal: boolean
@@ -20,6 +21,7 @@ export type ChartRow = {
 export type RowOptions = {
   prices: EnergyPrices
   realWorld: boolean
+  annualKm: number
 }
 
 export function toChartRow(row: CuratedRow, options: RowOptions): ChartRow {
@@ -35,6 +37,7 @@ export function toChartRow(row: CuratedRow, options: RowOptions): ChartRow {
     consumption,
     km: kmPer100Eur(price, consumption),
     eurPer100: eurPer100km(price, consumption),
+    eurPerYear: eurPerYear(options.annualKm, price, consumption),
     publicKm:
       row.powertrain === 'elektrika'
         ? kmPer100Eur(options.prices.javnoPolnjenje, consumption)

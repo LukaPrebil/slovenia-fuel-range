@@ -26,3 +26,17 @@ describe('Slovenian formatting', () => {
     expect(formatPercent(0.42)).toBe('42')
   })
 })
+
+describe('English formatting', () => {
+  it('swaps the separators', () => {
+    expect(formatKm(4257, 'en')).toBe('4,257')
+    expect(formatEur(1073.82, 'en')).toBe('1,073.82')
+    expect(formatPrice(1.627, 'en')).toBe('1.627')
+    expect(formatPrice(0.1807, 'en')).toBe('0.181')
+  })
+
+  it('keeps Slovenian as the default', () => {
+    expect(formatKm(4257)).toBe('4.257')
+    expect(formatEur(1073.82)).toBe('1.073,82')
+  })
+})

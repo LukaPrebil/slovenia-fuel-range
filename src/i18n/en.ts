@@ -35,6 +35,7 @@ export const en: Messages = {
   'prices.javnoPolnjenje': 'Public charging (€/kWh)',
   'prices.reset': 'Reset prices',
   'prices.overridden': 'Set by hand',
+  'prices.resetOne': 'Reset this price',
 
   'controls.annualKm': 'Kilometres driven per year',
   'controls.realWorld': 'Real-world consumption',

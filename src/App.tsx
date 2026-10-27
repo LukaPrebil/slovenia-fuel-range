@@ -1,7 +1,10 @@
 import { useEffect, useMemo } from 'react'
+import { AnnualKmSlider } from './components/AnnualKmSlider.tsx'
 import { ChartPanel } from './components/ChartPanel.tsx'
 import { LanguageToggle } from './components/LanguageToggle.tsx'
 import { Legend } from './components/Legend.tsx'
+import { PriceControls } from './components/PriceControls.tsx'
+import { RealWorldToggle } from './components/RealWorldToggle.tsx'
 import { ThemeToggle } from './components/ThemeToggle.tsx'
 import { curatedRows, defaultPrices, fuelWindow } from './data/load.ts'
 import { MARKERS, markersFor, panelRows, toChartRow } from './lib/chart.ts'
@@ -25,9 +28,13 @@ export default function App() {
   const rows = useMemo(
     () =>
       curatedRows.map((row) =>
-        toChartRow(row, { prices: state.prices, realWorld: state.realWorld }),
+        toChartRow(row, {
+          prices: state.prices,
+          realWorld: state.realWorld,
+          annualKm: state.annualKm,
+        }),
       ),
-    [state.prices, state.realWorld],
+    [state.prices, state.realWorld, state.annualKm],
   )
 
   return (
@@ -46,12 +53,34 @@ export default function App() {
         <p className="mt-1 text-sm text-muted">{t('page.subtitle')}</p>
         <p className="mt-2 text-xs text-muted">
           {t('page.pricesWindow', { from: fuelWindow.validFrom, to: fuelWindow.validTo })} ·{' '}
-          {t('prices.bencin')} {formatPrice(state.prices.bencin)} · {t('prices.dizel')}{' '}
-          {formatPrice(state.prices.dizel)} · {t('prices.elektrika')}{' '}
-          {formatPrice(state.prices.elektrika)} · {t('prices.javnoPolnjenje')}{' '}
-          {formatPrice(state.prices.javnoPolnjenje)}
+          {t('prices.bencin')} {formatPrice(state.prices.bencin, state.language)} ·{' '}
+          {t('prices.dizel')} {formatPrice(state.prices.dizel, state.language)} ·{' '}
+          {t('prices.elektrika')} {formatPrice(state.prices.elektrika, state.language)} ·{' '}
+          {t('prices.javnoPolnjenje')} {formatPrice(state.prices.javnoPolnjenje, state.language)}
         </p>
       </header>
+
+      <div className="mt-5 grid gap-5 rounded-lg border border-rule bg-raised/40 p-4 sm:grid-cols-2">
+        <PriceControls
+          prices={state.prices}
+          overrides={state.overrides}
+          language={state.language}
+          onChange={(key, value) => dispatch({ type: 'price', key, value })}
+          onResetAll={() => dispatch({ type: 'resetPrices' })}
+        />
+        <div className="space-y-4">
+          <AnnualKmSlider
+            value={state.annualKm}
+            language={state.language}
+            onChange={(value) => dispatch({ type: 'annualKm', value })}
+          />
+          <RealWorldToggle
+            value={state.realWorld}
+            language={state.language}
+            onChange={(value) => dispatch({ type: 'realWorld', value })}
+          />
+        </div>
+      </div>
 
       <div className="mt-6 grid gap-8 lg:grid-cols-2">
         <ChartPanel
@@ -77,7 +106,7 @@ export default function App() {
         <p className="text-xs text-muted">
           {t('page.distances', {
             list: MARKERS.map(
-              (marker) => `${t(`city.${marker.city}`)} ${formatKm(marker.km)} km`,
+              (marker) => `${t(`city.${marker.city}`)} ${formatKm(marker.km, state.language)} km`,
             ).join(', '),
           })}
         </p>

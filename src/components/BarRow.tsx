@@ -1,9 +1,10 @@
 import { barWidthPercent } from '../lib/calc.ts'
 import type { ChartRow } from '../lib/chart.ts'
 import { formatEur, formatKm } from '../lib/format.ts'
+import { translate, type Language } from '../lib/i18n.ts'
 import { BAR_COLOUR, INK_COLOUR } from './powertrain.ts'
 
-export function BarRow({ row }: { row: ChartRow }) {
+export function BarRow({ row, language }: { row: ChartRow; language: Language }) {
   return (
     <li
       className={`chart-row py-1.5 ${row.personal ? 'bg-raised' : ''}`}
@@ -31,8 +32,13 @@ export function BarRow({ row }: { row: ChartRow }) {
         )}
       </div>
       <div className="text-right tabular-nums">
-        <span className="block text-sm font-semibold">{formatKm(row.km)} km</span>
-        <span className="block text-xs text-muted">{formatEur(row.eurPer100)} €/100 km</span>
+        <span className="block text-sm font-semibold">{formatKm(row.km, language)} km</span>
+        <span className="block text-xs text-muted">
+          {formatEur(row.eurPer100, language)} €/100 km
+        </span>
+        <span className="block text-[0.65rem] text-muted">
+          {translate(language, 'unit.perYear', { eur: formatEur(row.eurPerYear, language) })}
+        </span>
       </div>
     </li>
   )

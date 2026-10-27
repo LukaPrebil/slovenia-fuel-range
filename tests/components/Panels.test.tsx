@@ -6,7 +6,9 @@ import { markersFor, panelRows, toChartRow } from '../../src/lib/chart.ts'
 import { barWidthPercent } from '../../src/lib/calc.ts'
 import { formatKm } from '../../src/lib/format.ts'
 
-const rows = curatedRows.map((row) => toChartRow(row, { prices: defaultPrices, realWorld: false }))
+const rows = curatedRows.map((row) =>
+  toChartRow(row, { prices: defaultPrices, realWorld: false, annualKm: 15000 }),
+)
 
 function renderPanel(panel: 'A' | 'B') {
   const panelRowList = panelRows(rows, panel)

@@ -20,7 +20,7 @@ export function Markers({ markers, language }: { markers: Marker[]; language: La
             className="absolute left-1/2 -translate-x-1/2 text-[0.65rem] whitespace-nowrap text-muted"
             style={{ top: index % 2 === 0 ? '0' : '0.8rem' }}
           >
-            {translate(language, `city.${marker.city}`)} {formatKm(marker.km)}
+            {translate(language, `city.${marker.city}`)} {formatKm(marker.km, language)}
           </span>
         </div>
       ))}

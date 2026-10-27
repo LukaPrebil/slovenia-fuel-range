@@ -34,6 +34,7 @@ export const sl = {
   'prices.javnoPolnjenje': 'Javno polnjenje (€/kWh)',
   'prices.reset': 'Ponastavi cene',
   'prices.overridden': 'Ročno nastavljeno',
+  'prices.resetOne': 'Ponastavi to ceno',
 
   'controls.annualKm': 'Letni prevoženi kilometri',
   'controls.realWorld': 'Realna poraba',

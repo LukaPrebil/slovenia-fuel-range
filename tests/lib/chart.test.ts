@@ -3,7 +3,7 @@ import { curatedRows, defaultPrices } from '../../src/data/load.ts'
 import { markersFor, panelRows, toChartRow } from '../../src/lib/chart.ts'
 import { consumptionFor, eurPer100km, kmPer100Eur, priceFor } from '../../src/lib/calc.ts'
 
-const options = { prices: defaultPrices, realWorld: false }
+const options = { prices: defaultPrices, realWorld: false, annualKm: 15000 }
 
 describe('chart rows', () => {
   it('derives km and cost per 100 km from the curated row', () => {

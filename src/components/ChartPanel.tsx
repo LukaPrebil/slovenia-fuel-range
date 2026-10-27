@@ -28,7 +28,7 @@ export function ChartPanel({ panel, title, subtitle, rows, markers, language }: 
         <Markers markers={markers} language={language} />
         <ol>
           {rows.map((row) => (
-            <BarRow key={row.key} row={row} />
+            <BarRow key={row.key} row={row} language={language} />
           ))}
         </ol>
       </div>
