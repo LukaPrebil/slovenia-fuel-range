@@ -4,7 +4,6 @@ export const en: Messages = {
   'page.title': 'How far €100 of energy takes you',
   'page.subtitle':
     'Kilometres per €100 of energy for the best-selling new cars (left) and for the models Slovenians actually drive (right). Sorted by reach.',
-  'page.pricesWindow': 'Prices are valid from {from} to {to}.',
   'page.legendGhost': 'public charging ({price} €/kWh)',
   'page.distances': 'Dashed lines are road distances from Ljubljana (OSRM): {list}.',
 
@@ -16,6 +15,7 @@ export const en: Messages = {
   'panel.a.title': 'Best-selling models, 2025',
   'panel.a.subtitle': 'First registrations of new passenger cars: top 20 sellers plus 5 electric.',
   'panel.b.title': 'What we actually drive',
+  'panel.switch': 'Which view',
   'panel.b.subtitle':
     'Registered fleet by model (estimate, end of 2024) plus the three most numerous electric models.',
 

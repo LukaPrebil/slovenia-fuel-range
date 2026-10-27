@@ -78,6 +78,7 @@ describe('the query string', () => {
     annualKm: 25000,
     realWorld: true,
     car: null,
+    panel: 'b',
   }
 
   it('is empty for a default view', () => {
@@ -86,7 +87,7 @@ describe('the query string', () => {
 
   it('round trips every control', () => {
     const query = toQuery(state)
-    expect(query).toBe('?lang=en&d=2.1&km=25000&rw=1')
+    expect(query).toBe('?lang=en&d=2.1&km=25000&rw=1&panel=b')
     expect(fromQuery(query, DEFAULTS)).toEqual(state)
   })
 
@@ -101,5 +102,17 @@ describe('the query string', () => {
 
   it('accepts a comma decimal in a copied link', () => {
     expect(fromQuery('?d=2,1', DEFAULTS).prices.dizel).toBe(2.1)
+  })
+})
+
+describe('the panel switch', () => {
+  it('defaults to panel A and travels in the link only when changed', () => {
+    const base = initialState(DEFAULTS)
+    expect(base.panel).toBe('a')
+    expect(toQuery(base)).toBe('')
+    const switched = reducer(base, { type: 'panel', panel: 'b' }, DEFAULTS)
+    expect(toQuery(switched)).toBe('?panel=b')
+    expect(fromQuery('?panel=b', DEFAULTS).panel).toBe('b')
+    expect(fromQuery('?panel=z', DEFAULTS).panel).toBe('a')
   })
 })

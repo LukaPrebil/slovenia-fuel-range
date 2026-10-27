@@ -12,9 +12,9 @@
   --rule: #e7e7e9;
   --rule-faint: #f1f1f2;
   --marker: #c4c4c4;
-  --bar-bencin: #9a9a9a;
+  --bar-bencin: #8f8f8f;
   --bar-dizel: #e8730c;
-  --bar-hibrid: #e070a0;
+  --bar-hibrid: #dc6a9c;
   --bar-elektrika: #2b7bba;
   --ink-bencin: #5c5c5c;
   --ink-dizel: #a8480a;
@@ -76,4 +76,9 @@ body {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }

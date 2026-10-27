@@ -109,8 +109,19 @@ function checkSize(): void {
   console.log(`catalogue size ${raw} bytes raw, ${gzipped} bytes gzipped`)
 }
 
+function checkCatalogueMeta(catalogue: CatalogueFile): void {
+  const meta = readJson<{ asOf: string; count: number }>('data/catalogue-meta.json')
+  if (meta.asOf !== catalogue.asOf) {
+    fail(`catalogue meta asOf ${meta.asOf} does not match the catalogue ${catalogue.asOf}`)
+  }
+  if (meta.count !== catalogue.entries.length) {
+    fail(`catalogue meta count ${meta.count} does not match ${catalogue.entries.length} entries`)
+  }
+}
+
 const prices = checkPrices()
 const catalogue = checkCatalogue()
+checkCatalogueMeta(catalogue)
 if (process.argv.includes('--max-size')) {
   checkSize()
 }

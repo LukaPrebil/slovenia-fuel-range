@@ -1,3 +1,4 @@
+import catalogueMeta from '../../data/catalogue-meta.json'
 import curatedCsv from '../../data/curated.csv?raw'
 import manualPrices from '../../data/prices-manual.json'
 import pricesFile from '../../data/prices.json'
@@ -8,6 +9,9 @@ import type { CuratedRow } from '../lib/types.ts'
 export const curatedRows: CuratedRow[] = parseCuratedCsv(curatedCsv)
 
 export const fuelWindow = pricesFile.fuel
+
+/** The catalogue itself loads on first search; its edition is tiny and needed up front. */
+export const catalogueAsOf: string = catalogueMeta.asOf
 
 /** Fuel comes from the weekly export; electricity is a hand-maintained snapshot. */
 export const defaultPrices: EnergyPrices = {

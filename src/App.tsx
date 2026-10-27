@@ -1,14 +1,16 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { AnnualKmSlider } from './components/AnnualKmSlider.tsx'
 import { CarSearch } from './components/CarSearch.tsx'
 import { ChartPanel } from './components/ChartPanel.tsx'
 import { LanguageToggle } from './components/LanguageToggle.tsx'
 import { Legend } from './components/Legend.tsx'
+import { FreshnessBanner } from './components/FreshnessBanner.tsx'
 import { ManualCarEntry } from './components/ManualCarEntry.tsx'
+import { PanelSwitch } from './components/PanelSwitch.tsx'
 import { PriceControls } from './components/PriceControls.tsx'
 import { RealWorldToggle } from './components/RealWorldToggle.tsx'
 import { ThemeToggle } from './components/ThemeToggle.tsx'
-import { curatedRows, defaultPrices, fuelWindow } from './data/load.ts'
+import { catalogueAsOf, curatedRows, defaultPrices, fuelWindow } from './data/load.ts'
 import {
   MARKERS,
   markersFor,
@@ -18,6 +20,7 @@ import {
   type ChartRow,
 } from './lib/chart.ts'
 import { formatKm, formatOne, formatPrice } from './lib/format.ts'
+import { freshnessOf } from './lib/freshness.ts'
 import { translate } from './lib/i18n.ts'
 import { useTheme } from './lib/useTheme.ts'
 import { useViewState } from './lib/useViewState.ts'
@@ -34,6 +37,8 @@ export default function App() {
     document.documentElement.lang = state.language
     document.title = translate(state.language, 'page.title')
   }, [state.language])
+
+  const [today] = useState(() => new Date())
 
   const options = useMemo(
     () => ({ prices: state.prices, realWorld: state.realWorld, annualKm: state.annualKm }),
@@ -54,8 +59,8 @@ export default function App() {
   return (
     <main className="mx-auto max-w-[1180px] px-4 py-8">
       <header>
-        <div className="flex items-start justify-between gap-4">
-          <h1 className="text-2xl font-bold">{t('page.title')}</h1>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+          <h1 className="text-xl font-bold sm:text-2xl">{t('page.title')}</h1>
           <div className="flex shrink-0 items-center gap-2">
             <ThemeToggle value={theme} language={state.language} onChange={setTheme} />
             <LanguageToggle
@@ -65,8 +70,14 @@ export default function App() {
           </div>
         </div>
         <p className="mt-1 text-sm text-muted">{t('page.subtitle')}</p>
+        <FreshnessBanner
+          language={state.language}
+          freshness={freshnessOf(fuelWindow.validTo, today)}
+          validFrom={fuelWindow.validFrom}
+          validTo={fuelWindow.validTo}
+          catalogueAsOf={catalogueAsOf}
+        />
         <p className="mt-2 text-xs text-muted">
-          {t('page.pricesWindow', { from: fuelWindow.validFrom, to: fuelWindow.validTo })} ·{' '}
           {t('prices.bencin')} {formatPrice(state.prices.bencin, state.language)} ·{' '}
           {t('prices.dizel')} {formatPrice(state.prices.dizel, state.language)} ·{' '}
           {t('prices.elektrika')} {formatPrice(state.prices.elektrika, state.language)} ·{' '}
@@ -150,7 +161,15 @@ export default function App() {
         />
       </section>
 
-      <div className="mt-6 grid gap-8 lg:grid-cols-2">
+      <div className="mt-6">
+        <PanelSwitch
+          value={state.panel}
+          language={state.language}
+          onChange={(panel) => dispatch({ type: 'panel', panel })}
+        />
+      </div>
+
+      <div className="panels mt-1 grid gap-8 lg:grid-cols-2" data-panel={state.panel}>
         <ChartPanel
           panel="A"
           title={t('panel.a.title')}

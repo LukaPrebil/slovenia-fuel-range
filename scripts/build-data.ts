@@ -74,6 +74,11 @@ async function main(): Promise<void> {
   const sheet = await parseArsoXlsx(source)
   const catalogue = buildCatalogue(sheet)
   writeCatalogue(catalogue)
+  writeJson('data/catalogue-meta.json', {
+    sourceUrl: catalogue.sourceUrl,
+    asOf: catalogue.asOf,
+    count: catalogue.entries.length,
+  })
   console.log(`catalogue ${catalogue.entries.length} entries, ${catalogue.asOf}`)
 }
 

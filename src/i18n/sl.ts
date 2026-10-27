@@ -2,7 +2,6 @@ export const sl = {
   'page.title': 'Koliko kilometrov za 100 evrov energije',
   'page.subtitle':
     'Kilometri za 100 € energije v najbolje prodajanih modelih (levo) in v modelih, ki jih Slovenci dejansko vozijo (desno). Razvrščeno po dosegu.',
-  'page.pricesWindow': 'Cene veljajo od {from} do {to}.',
   'page.legendGhost': 'elektrika na javni polnilnici ({price} €/kWh)',
   'page.distances': 'Črtkane črte so cestne razdalje od Ljubljane (OSRM): {list}.',
 
@@ -15,6 +14,7 @@ export const sl = {
   'panel.a.subtitle':
     'Prve registracije novih osebnih avtomobilov: 20 najbolje prodajanih + 5 električnih.',
   'panel.b.title': 'Kaj dejansko vozimo',
+  'panel.switch': 'Kateri prikaz',
   'panel.b.subtitle':
     'Registrirani vozni park po modelih (ocena, konec 2024) + trije najštevilčnejši električni.',
 

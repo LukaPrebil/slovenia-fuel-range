@@ -19,6 +19,7 @@ export function ChartPanel({ panel, title, subtitle, rows, markers, language }: 
       className="chart-panel"
       aria-labelledby={`panel-${panel}`}
       data-testid={`panel-${panel}`}
+      data-panel={panel}
     >
       <h2 id={`panel-${panel}`} className="text-base font-bold">
         {title}

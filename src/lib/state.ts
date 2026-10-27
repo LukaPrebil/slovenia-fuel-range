@@ -11,6 +11,8 @@ export const ANNUAL_KM_MAX = 50000
 export const ANNUAL_KM_STEP = 1000
 export const ANNUAL_KM_DEFAULT = 15000
 
+export type PanelView = 'a' | 'b'
+
 export type PersonalCar = {
   source: 'catalogue' | 'manual'
   label: string
@@ -26,6 +28,8 @@ export type ViewState = {
   annualKm: number
   realWorld: boolean
   car: PersonalCar | null
+  /** Which panel a phone shows; a wide screen always shows both. */
+  panel: PanelView
 }
 
 export type Action =
@@ -35,6 +39,7 @@ export type Action =
   | { type: 'realWorld'; value: boolean }
   | { type: 'resetPrices' }
   | { type: 'car'; car: PersonalCar | null }
+  | { type: 'panel'; panel: PanelView }
 
 export function initialState(defaults: EnergyPrices, language: Language = 'sl'): ViewState {
   return {
@@ -44,6 +49,7 @@ export function initialState(defaults: EnergyPrices, language: Language = 'sl'):
     annualKm: ANNUAL_KM_DEFAULT,
     realWorld: false,
     car: null,
+    panel: 'a',
   }
 }
 
@@ -115,6 +121,8 @@ export function reducer(state: ViewState, action: Action, defaults: EnergyPrices
       return { ...state, overrides: {}, prices: { ...defaults } }
     case 'car':
       return { ...state, car: action.car }
+    case 'panel':
+      return { ...state, panel: action.panel }
   }
 }
 
@@ -145,6 +153,9 @@ export function toQuery(state: ViewState): string {
   }
   if (state.car) {
     params.set('car', encodeCar(state.car))
+  }
+  if (state.panel !== 'a') {
+    params.set('panel', state.panel)
   }
   const query = params.toString()
   return query === '' ? '' : `?${query}`
@@ -181,5 +192,6 @@ export function fromQuery(
     annualKm: km === null ? ANNUAL_KM_DEFAULT : clampAnnualKm(km),
     realWorld: params.get('rw') === '1',
     car: decodeCar(params.get('car')),
+    panel: params.get('panel') === 'b' ? 'b' : 'a',
   }
 }
