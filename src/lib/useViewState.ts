@@ -1,30 +1,30 @@
-import { useCallback, useEffect, useReducer } from 'react'
+import { useEffect, useReducer } from 'react'
 import type { EnergyPrices } from './calc.ts'
 import { isLanguage, type Language } from './i18n.ts'
-import { fromQuery, initialState, reducer, toQuery, type Action, type ViewState } from './state.ts'
+import { type Action, fromQuery, initialState, reducer, toQuery, type ViewState } from './state.ts'
 
 export const LANGUAGE_STORAGE_KEY = 'fuel-range-language'
 
 function storedLanguage(): Language {
-  const value = window.localStorage.getItem(LANGUAGE_STORAGE_KEY)
-  return isLanguage(value) ? value : 'sl'
+	const value = window.localStorage.getItem(LANGUAGE_STORAGE_KEY)
+	return isLanguage(value) ? value : 'sl'
 }
 
 export function useViewState(defaults: EnergyPrices): [ViewState, (action: Action) => void] {
-  const [state, rawDispatch] = useReducer(
-    (current: ViewState, action: Action) => reducer(current, action, defaults),
-    undefined,
-    () => fromQuery(window.location.search, defaults, storedLanguage()),
-  )
+	const [state, rawDispatch] = useReducer(
+		(current: ViewState, action: Action) => reducer(current, action, defaults),
+		undefined,
+		() => fromQuery(window.location.search, defaults, storedLanguage()),
+	)
 
-  useEffect(() => {
-    const query = toQuery(state)
-    window.history.replaceState(null, '', `${window.location.pathname}${query}`)
-    window.localStorage.setItem(LANGUAGE_STORAGE_KEY, state.language)
-  }, [state])
+	useEffect(() => {
+		window.history.replaceState(null, '', `${window.location.pathname}${toQuery(state)}`)
+		window.localStorage.setItem(LANGUAGE_STORAGE_KEY, state.language)
+		// state is the single source: every field it holds belongs in the URL.
+	}, [state])
 
-  const dispatch = useCallback((action: Action) => rawDispatch(action), [rawDispatch])
-  return [state, dispatch]
+	// A reducer's dispatch is stable, so it needs no useCallback wrapper.
+	return [state, rawDispatch]
 }
 
 export { initialState }

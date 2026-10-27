@@ -3,16 +3,16 @@
  * middle track, so a distance marker lines up with every bar at once.
  */
 .chart-panel {
-  --label-w: 15rem;
-  --value-w: 6.5rem;
-  --marker-row: 0;
+	--label-w: 15rem;
+	--value-w: 6.5rem;
+	--marker-row: 0;
 }
 
 @media (max-width: 900px) {
-  .chart-panel {
-    --label-w: 8.5rem;
-    --value-w: 5.5rem;
-  }
+	.chart-panel {
+		--label-w: 8.5rem;
+		--value-w: 5.5rem;
+	}
 }
 
 /*
@@ -20,109 +20,109 @@
  * becomes two lines: labels and figures on top, the bar across the full width.
  */
 @media (max-width: 640px) {
-  /* Two labels cannot share a line on a 150 px track, so the second one drops down. */
-  .chart-panel {
-    --marker-row: 1.7rem;
-  }
+	/* Two labels cannot share a line on a 150 px track, so the second one drops down. */
+	.chart-panel {
+		--marker-row: 1.7rem;
+	}
 
-  .chart-plot {
-    padding-top: 3.6rem;
-  }
+	.chart-plot {
+		padding-top: 3.6rem;
+	}
 
-  .chart-row {
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas:
-      'label value'
-      'track track';
-    row-gap: 0.3rem;
-    column-gap: 0.5rem;
-    padding-block: 0.5rem;
-  }
+	.chart-row {
+		grid-template-columns: minmax(0, 1fr) auto;
+		grid-template-areas:
+			"label value"
+			"track track";
+		row-gap: 0.3rem;
+		column-gap: 0.5rem;
+		padding-block: 0.5rem;
+	}
 
-  .chart-label {
-    grid-area: label;
-  }
+	.chart-label {
+		grid-area: label;
+	}
 
-  .chart-value {
-    grid-area: value;
-  }
+	.chart-value {
+		grid-area: value;
+	}
 
-  .chart-track {
-    grid-area: track;
-    height: 0.8rem;
-  }
+	.chart-track {
+		grid-area: track;
+		height: 0.8rem;
+	}
 
-  .chart-markers {
-    left: 0;
-    right: 0;
-  }
+	.chart-markers {
+		left: 0;
+		right: 0;
+	}
 }
 
 .chart-row {
-  display: grid;
-  grid-template-columns: var(--label-w) minmax(0, 1fr) var(--value-w);
-  align-items: center;
-  column-gap: 0.75rem;
+	display: grid;
+	grid-template-columns: var(--label-w) minmax(0, 1fr) var(--value-w);
+	align-items: center;
+	column-gap: 0.75rem;
 }
 
 .chart-row + .chart-row {
-  border-top: 1px solid var(--rule-faint);
+	border-top: 1px solid var(--rule-faint);
 }
 
 .chart-plot {
-  position: relative;
+	position: relative;
 }
 
 .chart-markers {
-  position: absolute;
-  inset-block: 0;
-  left: calc(var(--label-w) + 0.75rem);
-  right: calc(var(--value-w) + 0.75rem);
-  pointer-events: none;
+	position: absolute;
+	inset-block: 0;
+	left: calc(var(--label-w) + 0.75rem);
+	right: calc(var(--value-w) + 0.75rem);
+	pointer-events: none;
 }
 
 .chart-marker {
-  position: absolute;
-  inset-block: 0;
-  width: 1px;
-  border-left: 1px dashed var(--marker);
+	position: absolute;
+	inset-block: 0;
+	width: 1px;
+	border-left: 1px dashed var(--marker);
 }
 
 .chart-marker-label {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  font-size: 0.65rem;
-  line-height: 1.2;
-  text-align: center;
-  color: var(--ink-muted);
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	white-space: nowrap;
+	font-size: 0.65rem;
+	line-height: 1.2;
+	text-align: center;
+	color: var(--ink-muted);
 }
 
 .chart-track {
-  position: relative;
-  height: 1.05rem;
+	position: relative;
+	height: 1.05rem;
 }
 
 .chart-bar {
-  position: absolute;
-  inset-block: 0;
-  left: 0;
-  border-radius: 999px;
+	position: absolute;
+	inset-block: 0;
+	left: 0;
+	border-radius: 999px;
 }
 
 .chart-ghost {
-  position: absolute;
-  left: 0;
-  height: 0.2rem;
-  border-radius: 999px;
-  opacity: 0.38;
+	position: absolute;
+	left: 0;
+	height: 0.2rem;
+	border-radius: 999px;
+	opacity: 0.38;
 }
 
 /* A phone shows one panel at a time; a wide screen always shows both. */
 @media (max-width: 1023px) {
-  .panels[data-panel='a'] .chart-panel[data-panel='B'],
-  .panels[data-panel='b'] .chart-panel[data-panel='A'] {
-    display: none;
-  }
+	.panels[data-panel="a"] .chart-panel[data-panel="B"],
+	.panels[data-panel="b"] .chart-panel[data-panel="A"] {
+		display: none;
+	}
 }

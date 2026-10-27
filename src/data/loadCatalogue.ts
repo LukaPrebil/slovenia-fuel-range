@@ -7,6 +7,6 @@ let cached: Promise<Catalogue> | null = null
  * arrives in its own chunk instead of the first paint.
  */
 export function loadCatalogue(): Promise<Catalogue> {
-  cached ??= import('../../data/catalogue.json').then((module) => module.default as Catalogue)
-  return cached
+	cached ??= import('../../data/catalogue.json').then((module) => module.default as Catalogue)
+	return cached
 }

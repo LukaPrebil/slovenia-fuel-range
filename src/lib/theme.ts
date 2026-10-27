@@ -5,7 +5,7 @@ export const THEMES: readonly ThemePreference[] = ['light', 'dark', 'system']
 export const THEME_STORAGE_KEY = 'fuel-range-theme'
 
 export function isThemePreference(value: string | null | undefined): value is ThemePreference {
-  return value === 'light' || value === 'dark' || value === 'system'
+	return value === 'light' || value === 'dark' || value === 'system'
 }
 
 /**
@@ -13,13 +13,13 @@ export function isThemePreference(value: string | null | undefined): value is Th
  * to `data-theme`, so light, dark and system share one switch in the stylesheet.
  */
 export function resolveTheme(preference: ThemePreference, prefersDark: boolean): ResolvedTheme {
-  if (preference === 'system') {
-    return prefersDark ? 'dark' : 'light'
-  }
-  return preference
+	if (preference === 'system') {
+		return prefersDark ? 'dark' : 'light'
+	}
+	return preference
 }
 
 export function readStoredTheme(storage: Pick<Storage, 'getItem'> | null): ThemePreference {
-  const stored = storage?.getItem(THEME_STORAGE_KEY)
-  return isThemePreference(stored) ? stored : 'system'
+	const stored = storage?.getItem(THEME_STORAGE_KEY)
+	return isThemePreference(stored) ? stored : 'system'
 }

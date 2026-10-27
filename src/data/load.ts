@@ -1,7 +1,7 @@
 import catalogueMeta from '../../data/catalogue-meta.json'
 import curatedCsv from '../../data/curated.csv?raw'
-import manualPrices from '../../data/prices-manual.json'
 import pricesFile from '../../data/prices.json'
+import manualPrices from '../../data/prices-manual.json'
 import type { EnergyPrices } from '../lib/calc.ts'
 import { parseCuratedCsv } from '../lib/curated.ts'
 import type { CuratedRow } from '../lib/types.ts'
@@ -15,13 +15,13 @@ export const catalogueAsOf: string = catalogueMeta.asOf
 
 /** Fuel comes from the weekly export; electricity is a hand-maintained snapshot. */
 export const defaultPrices: EnergyPrices = {
-  bencin: pricesFile.fuel.bencin,
-  dizel: pricesFile.fuel.dizel,
-  elektrika: manualPrices.elektrika.pricePerKwh,
-  javnoPolnjenje: manualPrices.javnoPolnjenje.pricePerKwh,
+	bencin: pricesFile.fuel.bencin,
+	dizel: pricesFile.fuel.dizel,
+	elektrika: manualPrices.elektrika.pricePerKwh,
+	javnoPolnjenje: manualPrices.javnoPolnjenje.pricePerKwh,
 }
 
 export const manualPriceMeta = {
-  elektrika: manualPrices.elektrika,
-  javnoPolnjenje: manualPrices.javnoPolnjenje,
+	elektrika: manualPrices.elektrika,
+	javnoPolnjenje: manualPrices.javnoPolnjenje,
 }

@@ -1,6 +1,0 @@
-node_modules
-dist
-package-lock.json
-data/*.json
-tests/fixtures/*.xlsx
-data/curated.csv
