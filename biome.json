@@ -31,9 +31,9 @@
 			"nursery": {
 				"noTailwindLegacyUtilities": "error",
 				"noTailwindRawColors": "error",
-				"useTailwindStaticClassStrings": "warn",
-				"noTailwindArbitraryValue": "warn",
-				"useTailwindShorthandClasses": "warn"
+				"useTailwindStaticClassStrings": "error",
+				"noTailwindArbitraryValue": "error",
+				"useTailwindShorthandClasses": "error"
 			}
 		}
 	},
