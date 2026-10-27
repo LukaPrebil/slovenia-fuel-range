@@ -10,9 +10,8 @@ function rowTexts(panel: HTMLElement): string[] {
 }
 
 function firstKm(panel: HTMLElement): number {
-  const text = rowTexts(panel)[0] ?? ''
-  const match = /([\d.]+) km/.exec(text)
-  return Number((match?.[1] ?? '0').replace(/\./g, ''))
+  const text = within(panel).getAllByTestId('row-km')[0]?.textContent ?? '0'
+  return Number(text.replace(/\D/g, ''))
 }
 
 describe('the controls', () => {

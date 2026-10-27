@@ -1,5 +1,6 @@
 import type { EnergyPrices } from './calc.ts'
 import { isLanguage, type Language } from './i18n.ts'
+import { POWERTRAINS, type Powertrain } from './types.ts'
 
 export type PriceKey = keyof EnergyPrices
 
@@ -10,12 +11,21 @@ export const ANNUAL_KM_MAX = 50000
 export const ANNUAL_KM_STEP = 1000
 export const ANNUAL_KM_DEFAULT = 15000
 
+export type PersonalCar = {
+  source: 'catalogue' | 'manual'
+  label: string
+  detail: string
+  powertrain: Powertrain
+  consumption: number
+}
+
 export type ViewState = {
   language: Language
   prices: EnergyPrices
   overrides: Partial<EnergyPrices>
   annualKm: number
   realWorld: boolean
+  car: PersonalCar | null
 }
 
 export type Action =
@@ -24,6 +34,7 @@ export type Action =
   | { type: 'annualKm'; value: number }
   | { type: 'realWorld'; value: boolean }
   | { type: 'resetPrices' }
+  | { type: 'car'; car: PersonalCar | null }
 
 export function initialState(defaults: EnergyPrices, language: Language = 'sl'): ViewState {
   return {
@@ -32,7 +43,43 @@ export function initialState(defaults: EnergyPrices, language: Language = 'sl'):
     overrides: {},
     annualKm: ANNUAL_KM_DEFAULT,
     realWorld: false,
+    car: null,
   }
+}
+
+function isPowertrain(value: string): value is Powertrain {
+  return POWERTRAINS.some((powertrain) => powertrain === value)
+}
+
+/** A car travels in the link as `kind|label|detail|powertrain|consumption`. */
+export function encodeCar(car: PersonalCar): string {
+  return [car.source, car.label, car.detail, car.powertrain, String(car.consumption)].join('|')
+}
+
+export function decodeCar(raw: string | null): PersonalCar | null {
+  if (!raw) {
+    return null
+  }
+  const parts = raw.split('|')
+  if (parts.length !== 5) {
+    return null
+  }
+  const [source, label, detail, powertrain, consumption] = parts as [
+    string,
+    string,
+    string,
+    string,
+    string,
+  ]
+  const value = Number(consumption.replace(',', '.'))
+  if (
+    (source !== 'catalogue' && source !== 'manual') ||
+    !isPowertrain(powertrain) ||
+    !(value > 0)
+  ) {
+    return null
+  }
+  return { source, label, detail, powertrain, consumption: value }
 }
 
 export function clampAnnualKm(value: number): number {
@@ -66,6 +113,8 @@ export function reducer(state: ViewState, action: Action, defaults: EnergyPrices
       return { ...state, realWorld: action.value }
     case 'resetPrices':
       return { ...state, overrides: {}, prices: { ...defaults } }
+    case 'car':
+      return { ...state, car: action.car }
   }
 }
 
@@ -93,6 +142,9 @@ export function toQuery(state: ViewState): string {
   }
   if (state.realWorld) {
     params.set('rw', '1')
+  }
+  if (state.car) {
+    params.set('car', encodeCar(state.car))
   }
   const query = params.toString()
   return query === '' ? '' : `?${query}`
@@ -128,5 +180,6 @@ export function fromQuery(
     prices: { ...defaults, ...overrides },
     annualKm: km === null ? ANNUAL_KM_DEFAULT : clampAnnualKm(km),
     realWorld: params.get('rw') === '1',
+    car: decodeCar(params.get('car')),
   }
 }

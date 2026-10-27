@@ -21,3 +21,12 @@ export type CuratedRow = {
 }
 
 export const POWERTRAINS: readonly Powertrain[] = ['bencin', 'dizel', 'hibrid', 'elektrika']
+
+/** One row of the searchable catalogue built from the ARSO list. */
+export type CatalogueEntry = {
+  brand: string
+  model: string
+  powertrain: Powertrain
+  consumption: number
+  unit: ConsumptionUnit
+}

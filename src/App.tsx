@@ -1,17 +1,27 @@
 import { useEffect, useMemo } from 'react'
 import { AnnualKmSlider } from './components/AnnualKmSlider.tsx'
+import { CarSearch } from './components/CarSearch.tsx'
 import { ChartPanel } from './components/ChartPanel.tsx'
 import { LanguageToggle } from './components/LanguageToggle.tsx'
 import { Legend } from './components/Legend.tsx'
+import { ManualCarEntry } from './components/ManualCarEntry.tsx'
 import { PriceControls } from './components/PriceControls.tsx'
 import { RealWorldToggle } from './components/RealWorldToggle.tsx'
 import { ThemeToggle } from './components/ThemeToggle.tsx'
 import { curatedRows, defaultPrices, fuelWindow } from './data/load.ts'
-import { MARKERS, markersFor, panelRows, toChartRow } from './lib/chart.ts'
-import { formatKm, formatPrice } from './lib/format.ts'
+import {
+  MARKERS,
+  markersFor,
+  panelRows,
+  personalRow,
+  toChartRow,
+  type ChartRow,
+} from './lib/chart.ts'
+import { formatKm, formatOne, formatPrice } from './lib/format.ts'
 import { translate } from './lib/i18n.ts'
 import { useTheme } from './lib/useTheme.ts'
 import { useViewState } from './lib/useViewState.ts'
+import type { PanelId } from './lib/types.ts'
 import './styles/chart.css'
 
 export default function App() {
@@ -25,17 +35,21 @@ export default function App() {
     document.title = translate(state.language, 'page.title')
   }, [state.language])
 
-  const rows = useMemo(
-    () =>
-      curatedRows.map((row) =>
-        toChartRow(row, {
-          prices: state.prices,
-          realWorld: state.realWorld,
-          annualKm: state.annualKm,
-        }),
-      ),
+  const options = useMemo(
+    () => ({ prices: state.prices, realWorld: state.realWorld, annualKm: state.annualKm }),
     [state.prices, state.realWorld, state.annualKm],
   )
+
+  const rows = useMemo(() => curatedRows.map((row) => toChartRow(row, options)), [options])
+
+  const personal = useMemo(
+    () => (state.car ? personalRow(state.car, options) : null),
+    [state.car, options],
+  )
+
+  /** The visitor's car lands on the same scale, so it is placed by reach, not appended. */
+  const withPersonal = (list: ChartRow[], panel: PanelId): ChartRow[] =>
+    personal ? [...list, { ...personal, panel }].sort((left, right) => right.km - left.km) : list
 
   return (
     <main className="mx-auto max-w-[1180px] px-4 py-8">
@@ -82,12 +96,66 @@ export default function App() {
         </div>
       </div>
 
+      <section className="mt-5 grid gap-5 rounded-lg border border-rule p-4 sm:grid-cols-2">
+        <div>
+          <h2 className="text-xs font-bold tracking-wide uppercase">{t('car.heading')}</h2>
+          <div className="mt-2 space-y-2">
+            <CarSearch
+              language={state.language}
+              onSelect={(hit) =>
+                dispatch({
+                  type: 'car',
+                  car: {
+                    source: 'catalogue',
+                    label: hit.entry.brand,
+                    detail: hit.entry.model,
+                    powertrain: hit.entry.powertrain,
+                    consumption: hit.entry.consumption,
+                  },
+                })
+              }
+            />
+            {state.car && (
+              <p className="flex flex-wrap items-center gap-2 text-xs">
+                <span className="font-semibold">
+                  {t('car.resultLabel', { model: state.car.label, variant: state.car.detail })}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => dispatch({ type: 'car', car: null })}
+                  className="text-muted underline decoration-dotted"
+                >
+                  {t('car.clear')}
+                </button>
+              </p>
+            )}
+          </div>
+        </div>
+        <ManualCarEntry
+          language={state.language}
+          onApply={(car) =>
+            dispatch({
+              type: 'car',
+              car: {
+                source: 'manual',
+                label: translate(state.language, 'car.personal'),
+                detail: `${formatOne(car.consumption, state.language)} ${
+                  car.powertrain === 'elektrika' ? 'kWh/100 km' : 'l/100 km'
+                }`,
+                powertrain: car.powertrain,
+                consumption: car.consumption,
+              },
+            })
+          }
+        />
+      </section>
+
       <div className="mt-6 grid gap-8 lg:grid-cols-2">
         <ChartPanel
           panel="A"
           title={t('panel.a.title')}
           subtitle={t('panel.a.subtitle')}
-          rows={panelRows(rows, 'A')}
+          rows={withPersonal(panelRows(rows, 'A'), 'A')}
           markers={markersFor(true)}
           language={state.language}
         />
@@ -95,14 +163,17 @@ export default function App() {
           panel="B"
           title={t('panel.b.title')}
           subtitle={t('panel.b.subtitle')}
-          rows={panelRows(rows, 'B')}
+          rows={withPersonal(panelRows(rows, 'B'), 'B')}
           markers={markersFor(true)}
           language={state.language}
         />
       </div>
 
       <footer className="mt-6 space-y-2">
-        <Legend language={state.language} publicPrice={formatPrice(state.prices.javnoPolnjenje)} />
+        <Legend
+          language={state.language}
+          publicPrice={formatPrice(state.prices.javnoPolnjenje, state.language)}
+        />
         <p className="text-xs text-muted">
           {t('page.distances', {
             list: MARKERS.map(

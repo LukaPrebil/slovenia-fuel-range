@@ -77,6 +77,7 @@ describe('the query string', () => {
     overrides: { dizel: 2.1 },
     annualKm: 25000,
     realWorld: true,
+    car: null,
   }
 
   it('is empty for a default view', () => {

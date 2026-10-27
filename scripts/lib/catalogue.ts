@@ -1,13 +1,8 @@
+import type { CatalogueEntry } from '../../src/lib/types.ts'
 import type { RawCatalogueRow, RawSheet } from './arso-xlsx.ts'
 import { ARSO_SOURCE_URL } from './arso-xlsx.ts'
 
-export type CatalogueEntry = {
-  brand: string
-  model: string
-  powertrain: 'bencin' | 'dizel' | 'hibrid' | 'elektrika'
-  consumption: number
-  unit: 'l/100km' | 'kWh/100km'
-}
+export type { CatalogueEntry }
 
 /**
  * One file has one source and one edition, so provenance is stored once at the

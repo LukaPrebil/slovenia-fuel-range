@@ -1,5 +1,13 @@
 import type { EnergyPrices } from './calc.ts'
-import { consumptionFor, eurPer100km, eurPerYear, kmPer100Eur, priceFor } from './calc.ts'
+import {
+  consumptionFor,
+  eurPer100km,
+  eurPerYear,
+  kmPer100Eur,
+  priceFor,
+  REAL_WORLD,
+} from './calc.ts'
+import type { PersonalCar } from './state.ts'
 import type { CuratedRow, PanelId, Powertrain } from './types.ts'
 
 export type ChartRow = {
@@ -43,6 +51,31 @@ export function toChartRow(row: CuratedRow, options: RowOptions): ChartRow {
         ? kmPer100Eur(options.prices.javnoPolnjenje, consumption)
         : null,
     personal: false,
+  }
+}
+
+/** The visitor's own car uses the same arithmetic, without a curated row behind it. */
+export function personalRow(car: PersonalCar, options: RowOptions): ChartRow {
+  const consumption = options.realWorld
+    ? car.consumption * REAL_WORLD[car.powertrain]
+    : car.consumption
+  const price = priceFor(car.powertrain, options.prices)
+  return {
+    key: 'personal',
+    panel: 'A',
+    model: car.label,
+    variant: car.detail,
+    powertrain: car.powertrain,
+    count: 0,
+    consumption,
+    km: kmPer100Eur(price, consumption),
+    eurPer100: eurPer100km(price, consumption),
+    eurPerYear: eurPerYear(options.annualKm, price, consumption),
+    publicKm:
+      car.powertrain === 'elektrika'
+        ? kmPer100Eur(options.prices.javnoPolnjenje, consumption)
+        : null,
+    personal: true,
   }
 }
 
