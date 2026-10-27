@@ -1,0 +1,2 @@
+# The same three checks CI runs, in about four seconds.
+npm run check && npm run build && npm run test

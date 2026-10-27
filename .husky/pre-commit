@@ -1,0 +1,2 @@
+# Formats and lints only what is staged, then re-stages the fixes.
+npx lint-staged
