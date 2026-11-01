@@ -20,7 +20,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           # commitlint needs the full history to walk the branch
           fetch-depth: 0
